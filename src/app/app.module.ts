@@ -21,16 +21,19 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { CarouselCardComponent } from './carousel-card/carousel-card.component';
-import { CarouselComponent } from './carousel/carousel.component';
+
+import { HomeComponent } from './home/home.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent,
-    CarouselCardComponent,
-    CarouselComponent
+    FooterComponent, 
+    HomeComponent,
+    //DetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { CarouselComponent } from './carousel/carousel.component';
     MdbTabsModule,
     MdbTooltipModule,
     MdbValidationModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

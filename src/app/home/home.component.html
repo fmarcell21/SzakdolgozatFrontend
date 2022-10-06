@@ -1,0 +1,91 @@
+
+<app-navbar></app-navbar>
+<br>
+<div class="container">
+
+    <!-- <div class="card" style="width:13rem ;" *ngFor="let movie of Movies">
+        
+        <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}"  class="card-img-top" alt={{movie.title}}>
+        <div class="card ">
+            <h5 class="card-title">{{movie.title}}</h5>
+            <p>{{movie.overview}}</p>
+
+        </div>
+    </div> -->
+    <!-- <mdb-carousel [controls]="true" [indicators]="true">
+        <mdb-carousel-item  *ngFor="let movie of Movies">
+            <div class="card" style="width:13rem ;" >        
+                <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}"  class="card-img-top" alt={{movie.title}}>
+                <div class="card-body ">
+                    <h5 class="card-title">{{movie.title}}</h5>
+                    <p>{{movie.overview}}</p>        
+                </div>
+            </div>
+            
+        </mdb-carousel-item>
+        
+    </mdb-carousel> -->
+    <!-- <div class="row row-cols-1 row-cols-md-4">
+        <div class="col"  *ngFor="let movie of Movies">
+             <div class="card" style="max-width: 540px;">
+                <div class="row g-0">
+                <div class="col-md-4">
+                    <img
+                    src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}"  class="img-fluid rounded-start" alt={{movie.title}}      
+                    />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                    <h5 class="card-title">{{movie.title}}</h5>
+                    <p class="card-text">
+                        {{movie.overview}}
+                    </p>
+                    </div>
+                </div>
+                </div>
+            </div> -->
+            <!-- <div class="card" style="max-width: 250px;">
+                <img
+                    src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}"  class="card-img-top" alt={{movie.title}}      
+                />
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">{{movie.title}}</h5>
+                 
+                </div>
+            </div>
+        </div>
+    </div> --> 
+    
+ 
+    <h1>Pupular Movies</h1>
+    <hr>
+
+    <div class="d-flex flex-row flex-nowrap overflow-auto">
+        <div class="card text-white bg-dark mb-3" style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" *ngFor="let movie of Movies"  (click)="onClick(movie.id, 'M') ">
+            <img
+                src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}"  class="card-img-top" alt={{movie.title}} 
+            />
+            <div class="card-footer">
+              <h5 class="card-title" style="text-align: center;">{{movie.title}}</h5>
+             
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <h1>Pupular TV Shows</h1>
+    <hr>
+    <div class="d-flex flex-row flex-nowrap overflow-auto">
+        <div class="card text-white bg-dark mb-3" style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" *ngFor="let show of Shows" (click)="onClick(show.id, 'T')">
+            <img
+                src="https://image.tmdb.org/t/p/w500{{show.poster_path}}"  class="card-img-top" alt={{show.name}}      
+            />
+            <div class="card-footer">
+              <h5 class="card-title" style="text-align: center;">{{show.name}}</h5>
+             
+            </div>
+        </div>
+    </div>
+
+</div> 
+
+<app-footer></app-footer>
