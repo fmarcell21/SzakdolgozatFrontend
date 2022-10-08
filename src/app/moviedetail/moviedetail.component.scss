@@ -1,0 +1,36 @@
+
+@media screen and (min-width: 720px){
+    .card-footer {
+        margin-bottom: 0px;
+        margin-top: auto;
+       
+        
+    }
+    
+}
+@media screen and (max-width: 960px){
+    .card-style {
+        color: black;
+    }
+}
+@media screen and (min-width: 960px) { 
+    .top-layer{
+        
+       
+
+        width: 100%;
+        height: 435px;
+       background: rgba($color: #000000, $alpha: 0.4);
+    }
+    .transition-layer {
+        padding-top: 25px;
+        background: rgb(0,0,0);
+        background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%); 
+        //height: 100px;
+    }
+    .bottom-layer {
+        padding-top: 25px;
+        background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0.95) 100%); 
+        height: 250px;
+    }
+}

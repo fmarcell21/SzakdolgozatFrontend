@@ -1,3 +1,5 @@
+import { Genre } from "./Genre";
+
 export interface Movie {  
     id: string,
     original_language: string,
@@ -6,4 +8,5 @@ export interface Movie {
     release_date: string,
     title: string,
     backdrop_path: string,
+    genres: Genre[]
 };

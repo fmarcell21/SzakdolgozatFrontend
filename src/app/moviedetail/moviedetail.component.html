@@ -1,20 +1,67 @@
-<div class="container" style="background-image: 'https://image.tmdb.org/t/p/w500{{detail.backdrop_path}}';"  *ngIf ="isLoaded">
-    <div class="card mb-3 mx-auto" style="max-width: 720px; background: transparent;" >
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img
-                src="https://image.tmdb.org/t/p/w500{{detail.poster_path}}"  class="card-img-top" alt="{{detail.title}}" />
-            </div>
-            <div class="col-md-8" >
-                <div class="card-body">
-                <h5 class="card-title">{{detail.title}}</h5>
-                <small class="text-muted">{{detail.release_date}}</small>
-                <p class="card-text">
-                    {{detail.overview}}
-                </p>
+
+    <!-- style="--backgroundUrl: detail.backdrop_path" custom-background -->
+    <!-- [ngStyle]="{'background-image': getUrl()}"  -->
+    <div class="top-layer">
+
+        <div class="container " style="padding-top: 15px;"  *ngIf ="isLoaded" > 
+            
+                <div class="card mb-3 mx-auto" style="max-width: 840px; background: transparent; "  >
                 
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img
+                            src="https://image.tmdb.org/t/p/w500{{detail.poster_path}}"  class="card-img-top" alt="{{detail.title}}" />
+                        </div>
+                        <div class="col-md-8 text-light"  >
+                            <div class="card-body  card-style" >
+                                <h5 class="card-title ">{{detail.title}}</h5>
+                                <small class="card-style">{{detail.release_date}}</small>
+                                <hr>
+                                <p class="card-text card-style" style="font-size: 100%;">
+                                    {{detail.overview}}
+                                </p>
+                            
+                            </div>
+                            <div class="card-footer text-center text-muted footer-pos" >
+                                <span class="badge badge-primary btn-outline-primary" style="max-width: 720px; background:transparent; padding: 5px; margin-inline: 5px; float: left;" *ngFor ="let genre of detail.genres">
+                                    {{genre.name}}
+                                </span>
+                                
+                                    <button class="btn btn-primary btn-floating"style=" float: right; margin-left: 5px;" >
+                                        <i href="#" class="fa-solid fa-book" > </i>
+                                    </button>
+                                    <button class="btn btn-primary btn-floating" style="float: right;">
+                                        <i href="#" class="fa-solid fa-check"> </i>
+                                    </button>                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
-</div>
+    <div class="transition-layer">
+        <div class="container" style="max-width: 840px; text-align: center;" >        
+            <div class="d-flex flex-row flex-nowrap overflow-auto" style="background: transparent;">
+                <div class="card text-white bg-dark mb-3" style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" *ngFor="let person of people">
+                    <img
+                        src="https://image.tmdb.org/t/p/w500{{person.profile_path}}"  class="card-img-top" alt={{person.name}} height="300px" width="200px"
+                    />    
+                    <div class="card-footer">
+                        <h5 class="card-title" style="text-align: center;">{{person.name}}</h5>               
+                    </div>
+                </div>           
+            </div>  
+        </div>
+    </div>
+    
+
+    <!-- <div class="bottom-layer">
+        <mdb-carousel [controls] ="true">
+            <mdb-carousel-item *ngFor = "let picture of pictures">
+                <img
+                  src="https://image.tmdb.org/t/p/w500{{picture.file_path}}"
+                  class="d-block w-100"
+                />
+              </mdb-carousel-item>
+        </mdb-carousel>
+    </div> -->
