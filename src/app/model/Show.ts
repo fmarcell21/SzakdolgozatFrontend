@@ -3,6 +3,7 @@ export interface Show {
     name: string,
     overview: string,
     poster_path: string,
-    fisrt_air_date: string,
+    first_air_date: string,
+    backdrop_path: string,
 
 }

@@ -25,15 +25,19 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 
 import { HttpClientModule } from '@angular/common/http';
+
 import { DetailsComponent } from './details/details.component';
+
+import { MoviedetailComponent } from './moviedetail/moviedetail.component';
+import { TvdetailComponent } from './tvdetail/tvdetail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent, 
-    HomeComponent,
-    //DetailsComponent,
+    HomeComponent, MoviedetailComponent, TvdetailComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,

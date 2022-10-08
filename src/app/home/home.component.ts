@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
       response => {
         
         this.Movies = response.results;
-        console.log(this.Movies);
+       // console.log(this.Movies);
       }
     )
   }
@@ -48,15 +48,16 @@ export class HomeComponent implements OnInit {
       response => {
         
         this.Shows = response.results;
-        console.log(this.Shows);
+      //  console.log(this.Shows);
       }
     )
   }
   onClick(detailId: string, detailType: string){
-    this.router.navigateByUrl('/details'); ///'+detailType+detailId
-    console.log(detailId);
-    console.log(detailType)
-    this.detailservice.setDetail(detailId, detailType)
+   // this.router.navigateByUrl('/details'); ///'+detailType+detailId
+   this.router.navigate(['/details'], { queryParams: {type: detailType, id: detailId }})
+   // console.log(detailId);
+    //console.log(detailType)
+   // this.detailservice.setDetail(detailId, detailType)
   }
 
 }
