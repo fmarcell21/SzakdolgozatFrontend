@@ -1,3 +1,4 @@
+import { Genre } from "./Genre";
 export interface Show {
     id: string,
     name: string,
@@ -5,5 +6,9 @@ export interface Show {
     poster_path: string,
     first_air_date: string,
     backdrop_path: string,
-
+    numer_of_seasons: string,
+    number_of_episodes: string,
+    next_episode_to_air: string,
+    in_production: string,
+    genres: Genre[]
 }

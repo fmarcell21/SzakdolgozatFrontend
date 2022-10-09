@@ -22,7 +22,7 @@
                                 </p>
                             
                             </div>
-                            <div class="card-footer text-center text-muted footer-pos" >
+                            <!-- <div class="card-footer text-center text-muted footer-pos" >
                                 <span class="badge badge-primary btn-outline-primary" style="max-width: 720px; background:transparent; padding: 5px; margin-inline: 5px; float: left;" *ngFor ="let genre of detail.genres">
                                     {{genre.name}}
                                 </span>
@@ -33,10 +33,31 @@
                                     <button class="btn btn-primary btn-floating" style="float: right;">
                                         <i href="#" class="fa-solid fa-check"> </i>
                                     </button>                                
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
+
+                <div class="card mb-3 mx-auto" style="max-width: 840px; background: transparent; max-height: 75px;"  >
+                
+                   
+                            
+                            <div class="  card-style" style="padding: 5px;" >
+                                <span class="badge badge-primary btn-outline-primary" style="max-width: 720px; background:transparent;margin-inline: 5px; float: left; margin-top: 7px; padding: 4px;" *ngFor ="let genre of detail.genres">
+                                    {{genre.name}}
+                                </span>
+
+                                <button class="btn btn-primary btn-floating"style=" float: right; margin-left: 5px;" >
+                                    <i href="#" class="fa-solid fa-book" > </i>
+                                </button>
+                                <button class="btn btn-primary btn-floating" style="float: right;">
+                                    <i href="#" class="fa-solid fa-check"> </i>
+                                </button>      
+                                   
+                            </div>        
+
+                </div>
+
         </div>
     </div>
     <div class="transition-layer">
@@ -47,7 +68,8 @@
                         src="https://image.tmdb.org/t/p/w500{{person.profile_path}}"  class="card-img-top" alt={{person.name}} height="300px" width="200px"
                     />    
                     <div class="card-footer">
-                        <h5 class="card-title" style="text-align: center;">{{person.name}}</h5>               
+                        <h5 class="card-title" style="text-align: center;">{{person.name}}</h5>     
+                        <small>{{person.character}}</small>          
                     </div>
                 </div>           
             </div>  

@@ -7,6 +7,7 @@ import { Person } from '../model/Person';
 
 
 
+
 @Component({
   selector: 'app-moviedetail',
   templateUrl: './moviedetail.component.html',
@@ -25,13 +26,13 @@ export class MoviedetailComponent implements OnInit {
   public id: string | undefined
   public people!: Person[];
 
-  
+ 
 
   ngOnInit(): void {
 
     this.route.queryParams.subscribe(params => {
       this.id = params['id']
-      console.log(this.id)
+     // console.log(this.id)
     })
 
     this.httpClient.get<any>('https://api.themoviedb.org/3/movie/'+this.id+'?api_key='+environment.apiKey+'&language=en-US').subscribe(
@@ -49,10 +50,10 @@ export class MoviedetailComponent implements OnInit {
 
   }
 
-  getUrl(){
+  /*getUrl(){
     console.log
     return "url('https://image.tmdb.org/t/p/w500" + this.detail.backdrop_path +"')"
   }
-
+*/
 
 }
