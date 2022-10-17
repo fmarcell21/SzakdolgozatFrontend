@@ -47,11 +47,11 @@
                                     {{genre.name}}
                                 </span>
 
-                                <button class="btn btn-primary btn-floating"style=" float: right; margin-left: 5px;" >
+                                <button class="btn btn-primary btn-floating"style=" float: right; margin-left: 5px;" (click) = "openModal()">
                                     <i href="#" class="fa-solid fa-book" > </i>
                                 </button>
-                                <button class="btn btn-primary btn-floating" style="float: right;">
-                                    <i href="#" class="fa-solid fa-check"> </i>
+                                <button class="btn btn-primary btn-floating" style="float: right; " (click) ="changeColour()">
+                                    <i href="#" class="fa-solid fa-heart {{tvStatus}}"> </i>
                                 </button>      
                                    
                             </div>        

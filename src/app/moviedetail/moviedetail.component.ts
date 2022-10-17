@@ -5,7 +5,8 @@ import { environment } from 'src/environments/environment';
 import { Route, ActivatedRoute } from '@angular/router';
 import { Person } from '../model/Person';
 
-
+import { ModalComponent } from '../modal/modal.component';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 
 @Component({
@@ -15,18 +16,23 @@ import { Person } from '../model/Person';
 
 })
 export class MoviedetailComponent implements OnInit {
-
+  modalRef: MdbModalRef<ModalComponent> | null = null;
   constructor(
     private httpClient: HttpClient,
     private route: ActivatedRoute,
+    private modalService: MdbModalService
     
   ) { }
   public isLoaded: boolean = false
   public detail!: Movie; 
   public id: string | undefined
   public people!: Person[];
-
+  public tvStatus: string = 'tvNotWatched';
  
+  openModal(){
+    this.modalRef = this.modalService.open(ModalComponent)
+  }
+
 
   ngOnInit(): void {
 
@@ -47,9 +53,18 @@ export class MoviedetailComponent implements OnInit {
       }
     )
   
-
+    
   }
-
+  changeColour() {
+    if(this.tvStatus === 'tvNotWatched'){
+      this.tvStatus = 'tvWatched'
+      console.log(this.tvStatus)
+    } else {
+      this.tvStatus = 'tvNotWatched'
+      console.log(this.tvStatus)
+    } 
+    
+  }
   /*getUrl(){
     console.log
     return "url('https://image.tmdb.org/t/p/w500" + this.detail.backdrop_path +"')"

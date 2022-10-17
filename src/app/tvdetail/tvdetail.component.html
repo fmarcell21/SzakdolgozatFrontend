@@ -1,6 +1,7 @@
 
     <!-- style="--backgroundUrl: detail.backdrop_path" custom-background -->
     <!-- [ngStyle]="{'background-image': getUrl()}"  -->
+ 
     <div class="top-layer">
 
         <div class="container " style="padding-top: 15px;"  *ngIf ="isLoaded" > 
@@ -43,15 +44,17 @@
 
                 <div class="card mb-3 mx-auto" style="max-width: 840px; background: transparent; max-height: 75px;"  >                         
                             <div class="  card-style" style="padding: 5px;" >
-                                <span class="badge badge-primary btn-outline-primary" style="max-width: 720px; background:transparent;margin-inline: 5px; float: left; margin-top: 7px; padding: 4px;" *ngFor ="let genre of detail.genres">
+                                <span class="badge badge-primary  btn-outline-primary" style="max-width: 720px; background:transparent;margin-inline: 5px; float: left; margin-top: 7px; padding: 4px; " *ngFor ="let genre of detail.genres">
                                     {{genre.name}}
                                 </span>
 
-                                <button class="btn btn-primary btn-floating"style=" float: right; margin-left: 5px;" >
+                                <button type="button" class="btn btn-primary btn-floating" style=" float: right; margin-left: 5px;" (click) = "openModal()" >
                                     <i href="#" class="fa-solid fa-book" > </i>
                                 </button>
-                                <button class="btn btn-primary btn-floating" style="float: right;">
-                                    <i href="#" class="fa-solid fa-check"> </i>
+                               
+
+                                <button class="btn btn-primary  btn-floating" style="float: right;" (click) ="changeColour()">
+                                    <i   href="#" class="fa-solid fa-heart {{tvStatus}}"> </i>
                                 </button>      
                                    
                             </div>  
@@ -85,6 +88,7 @@
         
     </div>
     
+  
 
     <!-- <div class="bottom-layer">
         <mdb-carousel [controls] ="true">
@@ -96,3 +100,4 @@
               </mdb-carousel-item>
         </mdb-carousel>
     </div> -->
+   

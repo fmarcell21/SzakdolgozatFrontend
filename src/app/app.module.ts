@@ -30,6 +30,9 @@ import { DetailsComponent } from './details/details.component';
 
 import { MoviedetailComponent } from './moviedetail/moviedetail.component';
 import { TvdetailComponent } from './tvdetail/tvdetail.component';
+import { ModalComponent } from './modal/modal.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { TvdetailComponent } from './tvdetail/tvdetail.component';
     FooterComponent, 
     HomeComponent, MoviedetailComponent, TvdetailComponent,
     DetailsComponent,
+    ModalComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

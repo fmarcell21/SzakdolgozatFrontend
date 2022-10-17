@@ -1,12 +1,12 @@
 
-<nav class="navbar navbar-expand-md navbar-light bg-light" >
-
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-md  bg-navy navbar-dark" > 
+<!-- navbar-dark -->
+    <div class="container-fluid text-gold">
         
-        <a class="navbar-brand" href="#">MovieDB</a>
+        <a class="navbar-brand text-gold" href="login">MovieDB</a>
 
         <button
-            class="navbar-toggler"
+            class="navbar-toggler text-gold"
             type="button"
             (click)="basicNavbar.toggle()"
             aria-expanded="false"
@@ -16,16 +16,16 @@
         </button>
 
         <div
-            class="collapse navbar-collapse justify-content-end"
+            class="collapse navbar-collapse justify-content-end "
             id="navbarSupportedContent"
             mdbCollapse
             #basicNavbar="mdbCollapse"
         >
 
-            <ul class="navbar-nav">
-                <li mdbDropdown class="nav-item dropdown">
+            <ul class="navbar-nav ">
+                <li mdbDropdown class="nav-item dropdown ">
                 <a
-                    class="nav-link dropdown-toggle"
+                    class="nav-link dropdown-toggle text-gold"
                     href="#"
                     id="navbarDropdownMenuLink"
                     role="button"
@@ -34,12 +34,12 @@
                 >
                     Movies
                 </a>
-                <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <ul mdbDropdownMenu class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                     <li>
-                    <a class="dropdown-item" href="movie">Top Movies</a>
+                    <a class="dropdown-item text-gold bg-navy" href="movie">Top Movies</a>
                     </li>
                     <li>
-                    <a class="dropdown-item" href="#">Movie Search</a>
+                    <a class="dropdown-item text-gold bg-navy" href="#">Movie Search</a>
                     </li>
                 </ul>
                 </li>
@@ -48,7 +48,7 @@
             <ul class="navbar-nav">
                 <li mdbDropdown class="nav-item dropdown">
                 <a
-                    class="nav-link dropdown-toggle"
+                    class="nav-link dropdown-toggle text-gold"
                     href="#"
                     id="navbarDropdownMenuLink"
                     role="button"
@@ -59,10 +59,10 @@
                 </a>
                 <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li>
-                    <a class="dropdown-item" href="show">Top Shows</a>
+                    <a class="dropdown-item text-gold bg-navy" href="show">Top Shows</a>
                     </li>
                     <li>
-                    <a class="dropdown-item" href="#">Show Search</a>
+                    <a class="dropdown-item text-gold bg-navy" href="#">Show Search</a>
                     </li>
                 </ul>
                 </li>
@@ -75,7 +75,7 @@
                 placeholder="Search"
                 aria-label="Search"
                 />
-                <button class="btn btn-outline-primary" type="button">
+                <button class="btn text-gold" type="button">
                     <i class="fas fa-search"></i>
                 </button>
             </form>

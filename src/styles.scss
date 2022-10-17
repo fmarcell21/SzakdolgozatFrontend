@@ -6,3 +6,35 @@
  
 @import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
 
+.bg-navy {
+    background-color: #1f3541;
+}
+.text-gold {
+    //#d4af37;
+   // color: #D4AF37;
+   color: #e0aa3e !important;
+}
+.bg-offwhie {
+    //background-color: #cfceca;
+    background-color: #2F7D81;
+}
+/*
+.navbar .navbar-nav > li .navbar-item ,
+.navbar .navbar-brand{
+                       color: #e0aa3e;
+                      } */
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #1f3541 !important;
+}
+.bg-overlay {
+    background: rgba($color: #000000, $alpha: 0.4);
+}
+.badge, .badge-primary {
+    color: #e0aa3e;
+    border-color: #e0aa3e;
+}
+.badge:hover{
+    color: #eecf91;
+    border-color: #eecf91;
+}
