@@ -56,12 +56,12 @@
         </div>
     </div> --> 
     
- 
+ <!-- hover-zoom -->
     <h1>Popular Movies</h1>
     <hr>
 
     <div class="d-flex flex-row flex-nowrap overflow-auto">
-        <div class="card text-white bg-dark mb-3" style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" *ngFor="let movie of Movies"  (click)="onClick(movie.id, 'M') ">
+        <div class="card text-white bg-dark mb-3 " style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" *ngFor="let movie of Movies"  (click)="onClick(movie.id, 'M') ">
             <img
                 src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}"  class="card-img-top" alt={{movie.title}} 
             />

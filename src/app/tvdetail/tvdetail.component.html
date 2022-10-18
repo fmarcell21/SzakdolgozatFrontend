@@ -54,7 +54,7 @@
                                
 
                                 <button class="btn btn-primary  btn-floating" style="float: right;" (click) ="changeColour()">
-                                    <i   href="#" class="fa-solid fa-heart {{tvStatus}}"> </i>
+                                    <i  mdbTooltip="Add to favourites!" href="#" class="fa-solid fa-heart {{tvStatus}}"> </i>
                                 </button>      
                                    
                             </div>  
@@ -86,9 +86,55 @@
             </div>  
         </div>
         
+
+
+
     </div>
     
-  
+    <div class="bottom-layer " *ngIf="isLoaded" style="padding-bottom: 25px;">
+        <div class="container" *ngFor ="let season of detail.seasons">        
+            <div class="card mb-3" style="max-width: 540px; background:transparent; margin-left: auto; margin-right: auto;" >
+                <div class="row g-0">
+                <div class="col-md-4">
+                    <img
+                    src="https://image.tmdb.org/t/p/w500{{season.poster_path}}"
+                    class="img-fluid rounded-start"
+                    />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body text-light" style="font-size:95%;">
+                        <h5 class="card-title">{{season.name}}</h5>
+                        <p class="card-text">
+                            {{season.overview}}
+                        </p>
+                    </div>
+                    <!-- <div class="card-footer">
+                        <button type="button" class="btn btn-primary btn-floating" style=" float: right; margin-left: 5px;" (click) = "openModal()" >
+                            <i href="#" class="fa-solid fa-book" > </i>
+                        </button>
+                    </div> -->
+                </div>
+                </div>
+                <div class="card mb-3 mx-auto" style="width: 540px; background: transparent; max-height: 75px;"  >                         
+                    <div class="  card-style" style="padding: 5px;" >
+
+                        <button type="button" class="btn btn-primary btn-floating" style=" float: right; margin-left: 5px;" (click) = "openModal()" >
+                            <i href="#" class="fa-solid fa-book" > </i>
+                        </button>
+                       
+
+                        <button class="btn btn-primary  btn-floating" style="float: right;" (click) ="changeColour()">
+                            <i  mdbTooltip="Add to favourites!" href="#" class="fa-solid fa-heart {{tvStatus}}"> </i>
+                        </button>      
+                           
+                    </div>  
+        </div>
+
+            </div>
+        </div>
+        
+
+    </div>
 
     <!-- <div class="bottom-layer">
         <mdb-carousel [controls] ="true">

@@ -25,19 +25,22 @@
             </div>
             <br>
             
-            <div class="input-group " style="width: 70%; margin-left: auto; margin-right: auto;">
+            <!-- <div class="input-group " style="width: 70%; margin-left: auto; margin-right: auto;">
                 <span class="input-group-text">Season</span>
                 <input type="number" class="form-control" id="tvSeason" placeholder="0" min="1" step="1" max="{{NumberOfSeasons}}"/>
                 <span class="input-group-text">/</span>
                 <span class="input-group-text">{{NumberOfSeasons}}</span>
             </div>
+
             <div class="input-group " style="width: 70%; margin-left: auto; margin-right: auto; padding-top: 5px;">
                 <span class="input-group-text">Episode</span>
                 <input type="number" class="form-control" id="tvEpisode" placeholder="0" min="1" step="1" max="{{NumberOfEpisodes}}"/>
                 <span class="input-group-text">/</span>
                 <span class="input-group-text">{{NumberOfEpisodes}}</span>
-            </div>
+            </div> -->
             
+            
+
             
         </form>
             
@@ -49,6 +52,8 @@
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
 </div>
+
+
 
 <div *ngIf ="modalType === 'M' && isLoaded" class="bg-navy text-gold">
     <div class="modal-header">
@@ -66,7 +71,7 @@
         <form>
 
             <div class="input-group">
-                <select class="form-control" id="statusFlag">
+                <select class="form-control" id="statusFlag" style="vertical-align: middle;">
                     <option>Watched</option>
                     <option>Plan to watch</option>
                     <option>Dropped</option>

@@ -1,4 +1,5 @@
 import { Genre } from "./Genre";
+import { Season } from "./Season";
 export interface Show {
     id: string,
     name: string,
@@ -11,5 +12,5 @@ export interface Show {
     next_episode_to_air: string,
     in_production: string,
     genres: Genre[],
-    
+    seasons: Season[]
 }

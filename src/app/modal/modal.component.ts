@@ -40,8 +40,8 @@ export class ModalComponent {
           this.NumberOfEpisodes = response.number_of_episodes
           this.NumberOfSeasons = response.number_of_seasons
           this.isLoaded = true
-          console.log(response.number_of_seasons)
-          console.log(this.NumberOfSeasons)
+          console.log(response.seasons)
+
         }
       )
       
