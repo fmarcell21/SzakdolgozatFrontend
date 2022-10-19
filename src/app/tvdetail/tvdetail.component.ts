@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Show } from '../model/Show';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Person } from '../model/Person';
 import { ActivatedRoute } from '@angular/router';
+import { Person } from '../model/Person';
+
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ModalComponent } from '../modal/modal.component';
 

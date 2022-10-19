@@ -33,6 +33,8 @@ import { TvdetailComponent } from './tvdetail/tvdetail.component';
 import { ModalComponent } from './modal/modal.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { EpisodecountComponent } from './episodecount/episodecount.component';
+import { TopComponent } from './top/top.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { RegisterComponent } from './register/register.component';
     ModalComponent,
     LoginComponent,
     RegisterComponent,
+    EpisodecountComponent,
+    TopComponent,
   ],
   imports: [
     BrowserModule,

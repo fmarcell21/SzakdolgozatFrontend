@@ -10,21 +10,38 @@
             (click)="modalRef.close()"
       ></button>
     </div>
-    <div class="modal-body bg-offwhie">
+    <div class="modal-body bg-offwhie" style="height: 150px;">
 
         <form>
 
             <div class="input-group">
-                <select class="form-control" id="statusFlag">
-                    <option>Watching</option>
-                    <option>Watched</option>
-                    <option>Plan to watch</option>
-                    <option>Dropped</option>
-                    <option>On Hold</option>
+                <select class="form-control" id="statusFlag" >
+                    <option value="1">Plan to watch</option>
+                    <option value="2">Watching</option>
+                    <option value="3">Watched</option>
+                    <option value="4">Dropped</option>
+                    <option value="5">On Hold</option>
                 </select>
             </div>
             <br>
-            
+
+            <div class="input-group bg-navy">
+                <!-- Selected = this.value -->
+                <span class="input-group-text text-gold">Season</span>
+                <input id="seasonInput" type="number" aria-label="Season" min="1" max="{{Seasons.length}}" class="form-control" onchange="Selected = this.value"/>
+                <span class="input-group-text text-gold">/{{Seasons.length}}</span>
+
+                <span class="input-group-text text-gold">Episode</span>
+                <input id="episodeInput" type="number" aria-label="Episode" min="1" max="{{Seasons[Selected].episode_count}}"class="form-control" />
+                <span  id="episodeOutput" class="input-group-text text-gold"  >{{Seasons[Selected].episode_count}}</span>
+                <!-- <app-episodecount [Season]="Seasons[Selected]"></app-episodecount> -->
+              </div>
+            <!-- <div class="input-group" >
+                <select class="form-control" id="statusFlag" >
+                    <option disabled>Season</option>
+                    <option *ngFor="let season of Seasons">{{season.name}}</option>
+                </select>
+            </div> -->
             <!-- <div class="input-group " style="width: 70%; margin-left: auto; margin-right: auto;">
                 <span class="input-group-text">Season</span>
                 <input type="number" class="form-control" id="tvSeason" placeholder="0" min="1" step="1" max="{{NumberOfSeasons}}"/>
@@ -66,7 +83,7 @@
             (click)="modalRef.close()"
       ></button>
     </div>
-    <div class="modal-body bg-offwhie">
+    <div class="modal-body bg-offwhie" >
 
         <form>
 
