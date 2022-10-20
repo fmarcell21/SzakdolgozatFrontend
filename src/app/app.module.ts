@@ -36,6 +36,8 @@ import { RegisterComponent } from './register/register.component';
 import { EpisodecountComponent } from './episodecount/episodecount.component';
 import { TopComponent } from './top/top.component';
 
+import {NgxPaginationModule} from 'ngx-pagination'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +50,7 @@ import { TopComponent } from './top/top.component';
     RegisterComponent,
     EpisodecountComponent,
     TopComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,8 @@ import { TopComponent } from './top/top.component';
     MdbTooltipModule,
     MdbValidationModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

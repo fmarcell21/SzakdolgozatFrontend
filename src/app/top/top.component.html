@@ -2,12 +2,26 @@
 
 <p *ngIf="isLoaded && type =='M'">Movie works</p> -->
 <div  *ngIf="isLoaded && type =='T'" style="padding-bottom: 50px;">
+    
 
     <div class="d-flex align-items-start mb-3 bg-navy text-gold" style="text-align: center; padding-top: 5px; padding-bottom: 5px;">
         <div class="col-2">Rank</div>
         <div class="col-8">Show</div>
         <div class="col-2">Status</div>
     </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item bg-navy">
+            <a class="page-link  text-gold"  tabindex="-1" (click)="changePage('prev')"><i class="fa-solid fa-arrow-left"></i></a>
+          </li>
+          <li class="page-item bg-navy">
+            <a class="page-link  text-gold"  tabindex="-1" (click)="changePage('first')">1</a>
+          </li>
+          <li class="page-item bg-navy">
+            <a class="page-link text-gold" (click)="changePage('next')"><i class="fa-solid fa-arrow-right"></i></a>
+          </li>
+        </ul>
+      </nav>
 
       <div class="d-flex align-items-start mb-3 text-gold" style="text-align: center;">
         
@@ -24,12 +38,12 @@
                     {{detail.overview}}
                 </p>            
             </div> -->
-            <div class="card mb-3 mx-auto" style=" background: transparent; "  *ngFor="let detail of Shows">
+            <div class="card mb-3 mx-auto" style=" background: transparent; height: 318;"  *ngFor="let detail of Shows">
                 
                 <div class="row g-0">
                     <div class="col-md-2">
                         <img
-                        src="https://image.tmdb.org/t/p/w500{{detail.poster_path}}"  class="card-img-top" alt="{{detail.name}}" style="max-width:240px ;min-height:318px;;" />
+                        src="https://image.tmdb.org/t/p/w500{{detail.poster_path}}"  class="card-img-top" alt="{{detail.name}}" style="max-width:240px ;height:318px;;" />
                     </div>
                     <div class="col-md-10 text-gold"  >
                         <div class="card-body  card-style" >
@@ -56,19 +70,118 @@
             </div>
           </div>
           
-          <div class="col-2">Status</div>
+          <div class="col-2">
+            <div style="height: 318px; margin-bottom:16px; align-items: center;" *ngFor="let detail of Shows;">
+                <button id="{{detail.id}}" class="btn btn-primary bg-navy" style=" margin-top: 45%; left: 50%;" >
+                    <i  class=" text-gold"> Status </i>
+                </button>
+            </div>
+          </div>
       </div>
 
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-          <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+          <li class="page-item bg-navy">
+            <a class="page-link  text-gold"  tabindex="-1" (click)="changePage('prev')"><i class="fa-solid fa-arrow-left"></i></a>
           </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
+          <li class="page-item bg-navy">
+            <a class="page-link  text-gold"  tabindex="-1" (click)="changePage('first')">1</a>
+          </li>
+          <li class="page-item bg-navy">
+            <a class="page-link text-gold" (click)="changePage('next')"><i class="fa-solid fa-arrow-right"></i></a>
+          </li>
+        </ul>
+      </nav>
+</div>
+
+<div  *ngIf="isLoaded && type =='M'" style="padding-bottom: 50px;">
+    
+
+    <div class="d-flex align-items-start mb-3 bg-navy text-gold" style="text-align: center; padding-top: 5px; padding-bottom: 5px;">
+        <div class="col-2">Rank</div>
+        <div class="col-8">Movie</div>
+        <div class="col-2">Status</div>
+    </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item bg-navy">
+            <a class="page-link  text-gold"  tabindex="-1" (click)="changePage('prev')"><i class="fa-solid fa-arrow-left"></i></a>
+          </li>
+          <li class="page-item bg-navy">
+            <a class="page-link  text-gold"  tabindex="-1" (click)="changePage('first')">1</a>
+          </li>
+          <li class="page-item bg-navy">
+            <a class="page-link text-gold" (click)="changePage('next')"><i class="fa-solid fa-arrow-right"></i></a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="d-flex align-items-start mb-3 text-gold" style="text-align: center;">
+        
+          <div class="col-2"  >
+            <h1 style="text-align: middle; vertical-align: middle; height: 318px; line-height: 318px; margin-bottom: 16px;" *ngFor="let detail of Movies; let i = index">{{(i+1)+((pageNum-1)*20)}}</h1>
+          </div>
+
+          <div class="col-8">
+            <!-- <div class="card-body  card-style" *ngFor="let detail of Shows">
+                <h5 class="card-title ">{{detail.name}}</h5>
+                <small class="card-style">{{detail.first_air_date}}</small>
+                <hr>
+                <p class="card-text card-style" style="font-size: 100%;">
+                    {{detail.overview}}
+                </p>            
+            </div> -->
+            <div class="card mb-3 mx-auto" style=" background: transparent; height: 318;"  *ngFor="let detail of Movies">
+                
+                <div class="row g-0">
+                    <div class="col-md-2">
+                        <img
+                        src="https://image.tmdb.org/t/p/w500{{detail.poster_path}}"  class="card-img-top" alt="{{detail.title}}" style="max-width:240px ;height:318px;;" />
+                    </div>
+                    <div class="col-md-10 text-gold"  >
+                        <div class="card-body  card-style" >
+                            <h5 class="card-title " style="text-align: start;">{{detail.title}}</h5>
+                            <p class="card-text card-style" style="font-size: 100%; text-align: start;" >
+                                {{detail.overview}}
+                            </p>
+                        
+                        </div>
+                        <!-- <div class="card-footer text-center text-muted footer-pos" >
+                            <span class="badge badge-primary btn-outline-primary" style="max-width: 720px; background:transparent; padding: 5px; margin-inline: 5px; float: left;" *ngFor ="let genre of detail.genres">
+                                {{genre.name}}
+                            </span>
+                            
+                                <button class="btn btn-primary btn-floating"style=" float: right; margin-left: 5px;" >
+                                    <i href="#" class="fa-solid fa-book" > </i>
+                                </button>
+                                <button class="btn btn-primary btn-floating" style="float: right;">
+                                    <i href="#" class="fa-solid fa-check"> </i>
+                                </button>                                
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+          </div>
+          
+          <div class="col-2">
+            <div style="height: 318px; margin-bottom:16px; align-items: center;" *ngFor="let detail of Movies;">
+                <button id="{{detail.id}}" class="btn btn-primary bg-navy" style=" margin-top: 45%; left: 50%;" >
+                    <i  class=" text-gold"> Status </i>
+                </button>
+            </div>
+          </div>
+      </div>
+
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item bg-navy">
+            <a class="page-link  text-gold"  tabindex="-1" (click)="changePage('prev')"><i class="fa-solid fa-arrow-left"></i></a>
+          </li>
+          <li class="page-item bg-navy">
+            <a class="page-link  text-gold"  tabindex="-1" (click)="changePage('first')">1</a>
+          </li>
+          <li class="page-item bg-navy">
+            <a class="page-link text-gold" (click)="changePage('next')"><i class="fa-solid fa-arrow-right"></i></a>
           </li>
         </ul>
       </nav>
