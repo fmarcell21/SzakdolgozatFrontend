@@ -10,7 +10,7 @@
 <div class="container">
   <app-footer></app-footer>
 </div> -->
-<app-navbar></app-navbar>
+<app-navbar *ngIf="currentRoute()"></app-navbar>
   <div class="bg-offwhie" >
     <div class="bg-overlay">
       <router-outlet></router-outlet>

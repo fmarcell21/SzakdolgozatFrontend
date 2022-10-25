@@ -9,4 +9,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'frontend';
   
+
+  currentRoute(){
+   if( window.location.pathname !== '/login' && window.location.pathname !== '/register'){
+    return true
+   } else {
+    return false
+   }
+  }
+
 }

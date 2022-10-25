@@ -21,11 +21,14 @@
               ">
             <div class="card-body p-5 shadow-5 text-center">
               <h2 class="fw-bold mb-5">Login</h2>
-              <form>
+
+              <form  #loginForm = "ngForm">
+              <!-- <form #userLogin ="ngForm" (ngSubmit) = "Login(userLogin.value)"> -->
                 <!-- 2 column grid layout with text inputs for the first and last names -->
+                <!-- [(NgModel) = "Username"]  -->
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example2" class="form-control" />
-                  <label class="form-label" for="form3Example3">Username</label>
+                  <input  type="text" id="Username" class="form-control" name="Username" ngModel/>
+                  <label class="form-label" for="Username">Username</label>
                 </div>
   
                 <!-- Email input -->
@@ -35,15 +38,16 @@
                 </div> -->
   
                 <!-- Password input -->
+                <!-- [(NgModel) = "Password"] -->
                 <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4" class="form-control" />
-                  <label class="form-label" for="form3Example4">Password</label>
+                  <input  type="password" id="Password" class="form-control" name="Passowrd" ngModel/>
+                  <label class="form-label" for="Password">Password</label>
                 </div>
   
                 <!-- Checkbox -->
               
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">
+                <!-- Submit button type="submit"-->
+                <button (click)="Login(loginForm)" class="btn btn-primary btn-block mb-4">
                   Login
                 </button>
   

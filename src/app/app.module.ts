@@ -36,7 +36,12 @@ import { RegisterComponent } from './register/register.component';
 import { EpisodecountComponent } from './episodecount/episodecount.component';
 import { TopComponent } from './top/top.component';
 
-import {NgxPaginationModule} from 'ngx-pagination'
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ProfileComponent } from './profile/profile.component'
+
+import { FormsModule } from '@angular/forms';
+
+//import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,6 +55,8 @@ import {NgxPaginationModule} from 'ngx-pagination'
     RegisterComponent,
     EpisodecountComponent,
     TopComponent,
+    ProfileComponent,
+    
     
   ],
   imports: [
@@ -72,7 +79,10 @@ import {NgxPaginationModule} from 'ngx-pagination'
     MdbValidationModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FormsModule
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

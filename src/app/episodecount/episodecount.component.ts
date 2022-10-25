@@ -1,6 +1,5 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnChanges, Input, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { Season } from '../model/Season';
-
 
 
 @Component({
@@ -8,17 +7,24 @@ import { Season } from '../model/Season';
   templateUrl: './episodecount.component.html',
   styleUrls: ['./episodecount.component.scss']
 })
-export class EpisodecountComponent implements OnInit {
+export class EpisodecountComponent implements OnChanges {
 
   @Input() Season!: Season
+  @Input() Seasons!: Season[]
+  @Input() Selected!: number
 
-  public EpisodeCount: string =""
+  //public EpisodeCount: string =""
 
-  constructor() { }
+  constructor(
+    private ref: ChangeDetectorRef
+  ) { }
 
-  ngOnInit(): void {
-    this.EpisodeCount = this.Season.episode_count
-
-  }
+  //ngOnInit(): void { }
   
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['Selected']) {
+      //this.createTimeline(changes['Selected'].currentValue[0].id)
+      console.log(this.Selected)
+    }
+  }
 }

@@ -93,7 +93,7 @@
     
     <div class="bottom-layer " *ngIf="isLoaded" style="padding-bottom: 25px;">
         <div class="container" *ngFor ="let season of detail.seasons">        
-            <div class="card mb-3" style="max-width: 540px; background:transparent; margin-left: auto; margin-right: auto;" >
+            <div class="card mb-3" style="max-width: 540px; background:transparent; margin-left: auto; margin-right: auto;" *ngIf="toNumber(season.season_number) !== 0" >
                 <div class="row g-0">
                 <div class="col-md-4">
                     <img

@@ -3,7 +3,7 @@
 <!-- navbar-dark -->
     <div class="container-fluid text-gold">
         
-        <a class="navbar-brand text-gold" href="login">MovieDB</a>
+        <a class="navbar-brand text-gold" href="home">MovieDB</a>
 
         <button
             class="navbar-toggler text-gold"
@@ -23,6 +23,9 @@
         >
 
             <ul class="navbar-nav ">
+
+              
+
                 <li mdbDropdown class="nav-item dropdown ">
                 <a
                     class="nav-link dropdown-toggle text-gold"
@@ -80,6 +83,36 @@
                 </button>
             </form>
             
+          <ul class="navbar-nav">
+            <li mdbDropdown class="nav-item dropdown" >
+              <a
+                class="nav-link dropdown-toggle d-flex align-items-center text-gold"
+                id="navbarDropdownMenuLink"
+                role="button"
+                mdbDropdownToggle
+                aria-expanded="false"
+              >
+              <img
+                src="https://mdbootstrap.com/img/Photos/Avatars/img (31).webp"
+                class="rounded-circle"
+                height="22"
+                alt=""
+                loading="lazy"
+              />
+              </a>
+              <ul mdbDropdownMenu class="dropdown-menu bg-navy " aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                  <a class="dropdown-item text-gold" href="/profile">My profile</a>
+                </li>
+                <li>
+                  <a class="dropdown-item text-gold" href="#">Settings</a>
+                </li>
+                <li>
+                  <a class="dropdown-item text-gold" href="/login">Logout</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
 
         </div>
     </div>

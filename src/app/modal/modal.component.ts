@@ -7,6 +7,8 @@ import { Show } from '../model/Show';
 import { environment } from 'src/environments/environment';
 import { Season } from '../model/Season';
 
+import { FormsModule } from '@angular/forms';
+
 import { EpisodecountComponent } from '../episodecount/episodecount.component';
 
 @Component({
@@ -28,7 +30,9 @@ export class ModalComponent {
   public Seasons!: Season[]
   public modalType: string = ""
   public tvId: string = ""
-  public Selected: number = 0
+  public Selected: number = 1
+
+ public progress: any;
 
   constructor(
     public modalRef: MdbModalRef<ModalComponent>,
@@ -37,6 +41,10 @@ export class ModalComponent {
     ) {}
 
   ngOnInit() {
+
+    
+
+
     this.route.queryParams.subscribe(params => {
       this.modalType = params['type']
       this.tvId = params['id']
@@ -50,7 +58,12 @@ export class ModalComponent {
           this.isLoaded = true
           this.Seasons = response.seasons
           console.log(response.seasons)
-
+          
+          if(Number(this.Seasons[0].season_number) === 0){
+            this.Selected = 1
+          } else {
+            this.Selected = 0
+          }
         }
       )
       
@@ -62,6 +75,15 @@ export class ModalComponent {
     
   }
   
+  toNumber(num: string) {
+    return Number(num)
+  }
+
+  public setValue(e:Event) {
+    
+    console.log(this.Selected)
+  }
+ 
  /* public updateEpisodeCount(SeasonNum: number){
     console.log(SeasonNum)
     document.getElementById("episodeInput")?.ariaValueMax = 

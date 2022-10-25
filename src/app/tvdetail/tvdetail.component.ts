@@ -61,7 +61,9 @@ export class TvdetailComponent implements OnInit {
     
   }
 
-
+  toNumber(num: string) {
+    return Number(num)
+  }
   //be kell kérnie egy értéket (ez a meghivó gomb azonosítoja)
   //ha a meghivó gomb az a "watched/not watched" akkor a REST API-nak kell egy post vagy delete parancsot küldenie, és utánna színt váltani
   //esetleg ha a meghívó gomb  az a listához ad, akkor is igazábol ugyan ez, viszont ott más API endpoint

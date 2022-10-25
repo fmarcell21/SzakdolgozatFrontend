@@ -1,4 +1,10 @@
 
-<span class="input-group-text text-gold">Episode</span>
+<!-- <span class="input-group-text text-gold">Episode</span>
 <input id="episodeInput" type="number" aria-label="Episode" min="1" max="{{EpisodeCount}}"class="form-control" />
-<span  id="episodeOutput" class="input-group-text text-gold"  >{{EpisodeCount}}</span>
+<span  id="episodeOutput" class="input-group-text text-gold"  >{{EpisodeCount}}</span> -->
+
+<div class="input-group bg-navy" >    
+    <span class="input-group-text text-gold" style="width: 100px; justify-content: center;">Episode</span>
+    <input id="episodeInput" type="number" aria-label="Episode" min="1" max="{{Seasons[Selected].episode_count}}"class="form-control" />
+    <span  id="episodeOutput" class="input-group-text text-gold" style="width: 50px; justify-content: center">{{Seasons[Selected].episode_count}}</span>     
+</div>

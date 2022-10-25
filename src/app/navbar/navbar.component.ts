@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+
+ // LoginStatus$ = new BehaviorSubject<boolean>(null);
+ // Username$ : Observable<string>;
 
   constructor() { }
 

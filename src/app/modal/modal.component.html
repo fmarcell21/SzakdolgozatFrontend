@@ -10,7 +10,7 @@
             (click)="modalRef.close()"
       ></button>
     </div>
-    <div class="modal-body bg-offwhie" style="height: 150px;">
+    <div class="modal-body bg-offwhie" style="height: 175px;">
 
         <form>
 
@@ -24,18 +24,22 @@
                 </select>
             </div>
             <br>
+            <!-- Selected = this.value  onchange="setValue(this.value)-->
+            <!-- <div class="input-group bg-navy" style="margin-bottom: 5px;">
+                
+                
+                <span class="input-group-text text-gold" style="width: 100px; justify-content: center">Season</span>
+                <input id="seasonInput" type="number" aria-label="Season" min="1" max="{{NumberOfSeasons}}" class="form-control" [(ngModel)] ="Selected"  name="seasonInput"/>
+                <span class="input-group-text text-gold" style="width: 50px; justify-content: center">{{NumberOfSeasons}}</span>
 
-            <div class="input-group bg-navy">
-                <!-- Selected = this.value -->
-                <span class="input-group-text text-gold">Season</span>
-                <input id="seasonInput" type="number" aria-label="Season" min="1" max="{{Seasons.length}}" class="form-control" onchange="Selected = this.value"/>
-                <span class="input-group-text text-gold">/{{Seasons.length}}</span>
+           
 
                 <span class="input-group-text text-gold">Episode</span>
-                <input id="episodeInput" type="number" aria-label="Episode" min="1" max="{{Seasons[Selected].episode_count}}"class="form-control" />
-                <span  id="episodeOutput" class="input-group-text text-gold"  >{{Seasons[Selected].episode_count}}</span>
-                <!-- <app-episodecount [Season]="Seasons[Selected]"></app-episodecount> -->
-              </div>
+                <input id="episodeInput" type="number" aria-label="Episode" min="1" max="{{Seasons[Selected].episode_count}}" class="form-control" [(ngModel)] = "Seasons[Selected].episode_count"/>
+                <span  class="input-group-text text-gold" >{{Seasons[Selected].episode_count}}</span>
+            </div>      -->
+            <!-- <app-episodecount  [Season]="Seasons[Selected] " [Seasons] = "Seasons" [Selected]="Selected" [(ngModel)] ="Selected" name="episodeInput"></app-episodecount>  -->
+            
             <!-- <div class="input-group" >
                 <select class="form-control" id="statusFlag" >
                     <option disabled>Season</option>
