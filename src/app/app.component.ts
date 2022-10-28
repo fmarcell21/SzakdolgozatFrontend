@@ -11,7 +11,7 @@ export class AppComponent {
   
 
   currentRoute(){
-   if( window.location.pathname !== '/login' && window.location.pathname !== '/register'){
+   if( window.location.pathname !== '/login' && window.location.pathname !== '/register' && window.location.pathname !== '/'){
     return true
    } else {
     return false

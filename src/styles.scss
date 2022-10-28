@@ -24,11 +24,17 @@
                        color: #e0aa3e;
                       } */
 
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+.btn-primary, .btn-primary:active, .btn-primary:visited {
     background-color: #1f3541 !important;
+    
+}
+.btn-primary:hover{
+    background-color: white !important;
+    color: #e0aa3e !important;
 }
 .bg-overlay {
     background: rgba($color: #000000, $alpha: 0.4);
+    
 }
 .badge, .badge-primary {
     color: #e0aa3e;

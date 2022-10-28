@@ -30,9 +30,9 @@ export class ModalComponent {
   public Seasons!: Season[]
   public modalType: string = ""
   public tvId: string = ""
-  public Selected: number = 1
-
- public progress: any;
+  public SelectedSeason: number = 1
+  public SelectedEpisode: number = 1
+  
 
   constructor(
     public modalRef: MdbModalRef<ModalComponent>,
@@ -60,10 +60,11 @@ export class ModalComponent {
           console.log(response.seasons)
           
           if(Number(this.Seasons[0].season_number) === 0){
-            this.Selected = 1
+            this.SelectedSeason = 1
           } else {
-            this.Selected = 0
+            this.SelectedSeason = 0
           }
+          
         }
       )
       
@@ -71,7 +72,7 @@ export class ModalComponent {
       this.isLoaded = true;
     }
     
-   
+    
     
   }
   
@@ -81,7 +82,18 @@ export class ModalComponent {
 
   public setValue(e:Event) {
     
-    console.log(this.Selected)
+   // console.log(this.Selected)
+  }
+
+  /*
+  TODO saveProgress() megírása
+  Megnézni, hogy amit fel akar venni az lehetséges-e (16 epizódos évadhoz ne legyen 24 az adatbázisban stb)
+  Ha nézi a sorozatot, akkor adatb-ból be is töltse a progresst
+  */
+  saveProgress() {
+    
+    console.log(this.SelectedSeason)
+    console.log(this.SelectedEpisode)
   }
  
  /* public updateEpisodeCount(SeasonNum: number){

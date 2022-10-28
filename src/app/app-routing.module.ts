@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { TopComponent } from './top/top.component';
 
 const routes: Routes = [
+  {path:'', component: LoginComponent},
   {path: 'home', component: HomeComponent},
   {path: 'details', component: DetailsComponent},
   {path: 'login', component: LoginComponent},

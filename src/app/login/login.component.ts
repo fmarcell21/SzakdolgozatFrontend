@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     //let l = document.getElementById('Username')
     //console.log(p )
     //console.log(l)
-    //this.router.navigate(['/home'])
+    this.router.navigate(['/home'])
     //console.log(angular.element('#Username').val())
     //console.log(this.Password)
     //console.log(this.Username)

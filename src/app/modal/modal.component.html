@@ -25,19 +25,20 @@
             </div>
             <br>
             <!-- Selected = this.value  onchange="setValue(this.value)-->
-            <!-- <div class="input-group bg-navy" style="margin-bottom: 5px;">
+            <form class="input-group bg-navy" style="margin-bottom: 5px;" name="progressForm" >
                 
-                
+            
                 <span class="input-group-text text-gold" style="width: 100px; justify-content: center">Season</span>
-                <input id="seasonInput" type="number" aria-label="Season" min="1" max="{{NumberOfSeasons}}" class="form-control" [(ngModel)] ="Selected"  name="seasonInput"/>
+                <input id="seasonInput" type="number" aria-label="Season" min="1" max="{{NumberOfSeasons}}" class="form-control" [(ngModel)] ="SelectedSeason"  name="seasonInput"/>
                 <span class="input-group-text text-gold" style="width: 50px; justify-content: center">{{NumberOfSeasons}}</span>
 
            
 
                 <span class="input-group-text text-gold">Episode</span>
-                <input id="episodeInput" type="number" aria-label="Episode" min="1" max="{{Seasons[Selected].episode_count}}" class="form-control" [(ngModel)] = "Seasons[Selected].episode_count"/>
-                <span  class="input-group-text text-gold" >{{Seasons[Selected].episode_count}}</span>
-            </div>      -->
+                <input id="episodeInput" type="number" aria-label="Episode" min="1" max="{{Seasons[SelectedSeason].episode_count}}" name="episodeInput" class="form-control" [(ngModel)] ="SelectedEpisode"/>
+                <span  class="input-group-text text-gold" >{{Seasons[SelectedSeason].episode_count}}</span>
+            
+            </form>     
             <!-- <app-episodecount  [Season]="Seasons[Selected] " [Seasons] = "Seasons" [Selected]="Selected" [(ngModel)] ="Selected" name="episodeInput"></app-episodecount>  -->
             
             <!-- <div class="input-group" >
@@ -70,7 +71,7 @@
         <button type="button" class="btn btn-primary" (click)="modalRef.close()" >
           Cancel
         </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" (click)="saveProgress()">Save changes</button>
       </div>
 </div>
 

@@ -63,7 +63,7 @@
     <div class="d-flex flex-row flex-nowrap overflow-auto">
         <div class="card text-white bg-dark mb-3 " style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" *ngFor="let movie of Movies"  (click)="onClick(movie.id, 'M') ">
             <img
-                src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}"  class="card-img-top" alt={{movie.title}} 
+                src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}"  class="card-img-top"   alt={{movie.title}} 
             />
             <div class="card-footer">
               <h5 class="card-title" style="text-align: center;">{{movie.title}}</h5>
