@@ -7,12 +7,46 @@
 
 <div  *ngIf="isLoaded"  style="padding-bottom: 50px;">
     
+    
 
     <div class="d-flex align-items-start mb-3 bg-navy text-gold" style="text-align: center; padding-top: 5px; padding-bottom: 5px;">
         <div class="col-2">Rank</div>
         <div class="col-8">Show</div>
         <div class="col-2"></div>
     </div>
+
+    <!-- 
+[(ngModel)]="sQuery"
+        (keyup.enter)="search()"
+        (click)="search()"
+     -->
+    <!-- <div style="display: block; padding-bottom: 15px;">
+      <div style="display: table; margin:auto;  max-width: 350px;">
+        <form class="d-flex input-group w-auto ">
+
+          <button class="btn text-gold" type="button" mdbTooltip="Advanced" (click)="showAdv()" >
+            <i class="fas fa-gear"></i>
+          </button>
+
+          <input
+          type="search"
+          class="form-control "
+          placeholder="Search"
+          aria-label="Search"
+          name = "searchBar"        
+          />
+          <button class="btn text-gold" type="button" >
+              <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>   
+      
+      <div [hidden]="displayAdv" class="bg-navy" style="height: 250px ; width: 750px; display: table; margin: auto; margin-top: 10px;">
+
+      </div>
+    </div> -->
+    <app-advanced-search></app-advanced-search>
+
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
           <li class="page-item bg-navy">
@@ -48,12 +82,12 @@
                     {{detail.overview}}
                 </p>            
             </div> -->
-            <div class="card mb-3 mx-auto" style=" background: transparent; height: 318;"  *ngFor="let detail of Shows">
+            <div class="card mb-3 mx-auto" style=" background: transparent; height: 318px "  *ngFor="let detail of Shows">
                 
-                <div class="row g-0" *ngIf="detail.media_type === 'tv'">
+                <div class="row g-0" *ngIf="(detail.media_type === 'tv') || (type === 'AT')">
                     <div class="col-md-2">
                         <img
-                        onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'" src="https://image.tmdb.org/t/p/w500{{detail.poster_path}}"  class="card-img-top" alt="{{detail.name}}" style="max-width:240px ;height:318px;;" />
+                        onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'" src="https://image.tmdb.org/t/p/w500{{detail.poster_path}}"  class="card-img-top" alt="{{detail.name}}" style="max-width:211px ;height:318px;;" />
                     </div>
                     <div class="col-md-10 text-gold"  >
                         <div class="card-body  card-style" >
@@ -66,10 +100,10 @@
                     </div>
                 </div>
 
-                <div class="row g-0" *ngIf="detail.media_type === 'movie'">
+                <div class="row g-0" *ngIf="(detail.media_type === 'movie') || (type ==='AM')">
                   <div class="col-md-2">
                       <img
-                      onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'" src="https://image.tmdb.org/t/p/w500{{detail.poster_path}}"  class="card-img-top" alt="{{detail.title}}" style="max-width:240px ;height:318px;;" />
+                      onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'" src="https://image.tmdb.org/t/p/w500{{detail.poster_path}}"  class="card-img-top" alt="{{detail.title}}" style="max-width:211px ;height:318px;;" />
                   </div>
                   <div class="col-md-10 text-gold"  >
                       <div class="card-body  card-style" >
@@ -82,10 +116,10 @@
                   </div>                
                 </div>
 
-              <div class="row g-0" *ngIf="detail.media_type === 'person'">
+              <div class="row g-0" *ngIf="(detail.media_type === 'person') || (type === 'AP')">
                 <div class="col-md-2">
                     <img
-                    onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'" src="https://image.tmdb.org/t/p/w500{{detail.profile_path}}"  class="card-img-top" alt="{{detail.name}}" style="max-width:240px ;height:318px;;" />
+                    onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'" src="https://image.tmdb.org/t/p/w500{{detail.profile_path}}"  class="card-img-top" alt="{{detail.name}}" style="max-width:211px ;height:318px;;" />
                 </div>
                 <div class="col-md-10 text-gold"  >
                     <div class="card-body  card-style" >
@@ -97,9 +131,31 @@
             </div>
           </div>
           
-          <div class="col-2">
+          <div class="col-2" *ngIf="type==='DEF'">
             <div style="height: 318px; margin-bottom:16px; align-items: center;" *ngFor="let detail of Shows;">
                 <button id="{{detail.id}}" class="btn btn-primary bg-navy" style=" margin-top: 45%; left: 50%;" (click)="redirect(detail.id, detail.media_type)"   >
+                    <i  class=" text-gold"> About </i>
+                </button>
+            </div>
+          </div>
+
+          <div class="col-2" *ngIf="type === 'AT'">
+            <div style="height: 318px; margin-bottom:16px; align-items: center;" *ngFor="let detail of Shows;">
+                <button id="{{detail.id}}" class="btn btn-primary bg-navy" style=" margin-top: 45%; left: 50%;" (click)="redirect(detail.id, 'tv')"   >
+                    <i  class=" text-gold"> About </i>
+                </button>
+            </div>
+          </div>
+          <div class="col-2" *ngIf="type === 'AP'">
+            <div style="height: 318px; margin-bottom:16px; align-items: center;" *ngFor="let detail of Shows;">
+                <button id="{{detail.id}}" class="btn btn-primary bg-navy" style=" margin-top: 45%; left: 50%;" (click)="redirect(detail.id, 'person')"   >
+                    <i  class=" text-gold"> About </i>
+                </button>
+            </div>
+          </div>
+          <div class="col-2" *ngIf="type === 'AM'">
+            <div style="height: 318px; margin-bottom:16px; align-items: center;" *ngFor="let detail of Shows;">
+                <button id="{{detail.id}}" class="btn btn-primary bg-navy" style=" margin-top: 45%; left: 50%;" (click)="redirect(detail.id, 'movie')"   >
                     <i  class=" text-gold"> About </i>
                 </button>
             </div>

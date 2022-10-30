@@ -26,10 +26,14 @@
               <!-- <form #userLogin ="ngForm" (ngSubmit) = "Login(userLogin.value)"> -->
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <!-- [(NgModel) = "Username"]  -->
-                <div class="form-outline mb-4">
+                <!-- <div class="form-outline mb-4">
                   <input  type="text" id="Username" class="form-control" name="Username" ngModel #Username="ngModel" required minlength="4"/>
                   <label class="form-label" for="Username">Username</label>
-                </div>
+                </div> -->
+                <mdb-form-control class="form-dark" style="margin-bottom: 10px;">
+                  <input mdbInput type="text" id="formControlLg" name="Username" ngModel #Username="ngModel" class="form-control form-control-lg" />
+                  <label mdbLabel class="form-label" for="formControlLg">Username</label>
+                </mdb-form-control>
   
                 <!-- Email input -->
                 <!-- <div class="form-outline mb-4">
@@ -39,11 +43,15 @@
   
                 <!-- Password input -->
                 <!-- [(NgModel) = "Password"] -->
-                <div class="form-outline mb-4">
-                  <input  type="password" id="Password" class="form-control" name="Passowrd" ngModel #Password="ngModel" />
+                <!-- <div class="form-outline mb-4">
+                  <input  type="password" id="Password" class="form-control" name="Password" ngModel #Password="ngModel" />
                   <label class="form-label" for="Password">Password</label>
-                </div>
-  
+                </div> -->
+
+                <mdb-form-control class="form-outline" style="margin-bottom: 10px;">
+                  <input mdbInput type="password" id="formControlLg" name="Password" ngModel #Password="ngModel" class="form-control form-control-lg" />
+                  <label mdbLabel class="form-label" for="formControlLg">Password</label>
+                </mdb-form-control>
                 <!-- Checkbox -->
               
                 <!-- Submit button type="submit"-->

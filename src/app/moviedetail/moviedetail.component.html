@@ -1,7 +1,7 @@
 
-    <div class="top-layer">
+    <div class="top-layer" *ngIf ="isLoaded" >
 
-        <div class="container " style="padding-top: 15px;"  *ngIf ="isLoaded" > 
+        <div class="container " style="padding-top: 15px;"  > 
             
                 <div class="card mb-3 mx-auto" style="max-width: 840px; background: transparent; "  >
                 
@@ -48,8 +48,8 @@
 
         </div>
     </div>
-    <div class="transition-layer">
-        <div class="container" style="max-width: 840px; text-align: center;" >       
+    <div class="transition-layer" *ngIf ="isLoaded" >
+        <div class="container" style="max-width: 840px; text-align: center;" *ngIf="hasCast">       
             <h5 class="text-gold">Cast</h5> 
             <div class="d-flex flex-row flex-nowrap overflow-auto" style="background: transparent;">
                 <div class="card text-white bg-dark mb-3 hoverable" style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" *ngFor="let person of people" (click)="onClick(person.id, 'P')">

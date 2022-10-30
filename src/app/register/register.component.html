@@ -23,22 +23,36 @@
               <h2 class="fw-bold mb-5">Register</h2>
               <form #registerForm = "ngForm">
                 <!-- 2 column grid layout with text inputs for the first and last names -->
-                <div class="form-outline mb-4">
+                <!-- <div class="form-outline mb-4">
                   <input type="text" id="form3Example2" class="form-control" name="Username" ngModel/>
                   <label class="form-label" for="form3Example3">Username</label>
-                </div>
+                </div> -->
+                <mdb-form-control style="margin-bottom: 10px;">
+                  <input mdbInput type="text" id="formControlLg" name="Username" ngModel #Username="ngModel" class="form-control form-control-lg" />
+                  <label mdbLabel class="form-label" for="formControlLg">Username</label>
+                </mdb-form-control>
   
                 <!-- Email input -->
-                <div class="form-outline mb-4">
+                <!-- <div class="form-outline mb-4">
                   <input type="email" id="form3Example3" class="form-control" name="Email" ngModel/>
                   <label class="form-label" for="form3Example3">Email address</label>
-                </div>
+                </div> -->
+
+                <mdb-form-control style="margin-bottom: 10px;">
+                  <input mdbInput type="text" id="formControlLg" name="Email" ngModel #Email="ngModel" class="form-control form-control-lg" />
+                  <label mdbLabel class="form-label" for="formControlLg">Email</label>
+                </mdb-form-control>
   
                 <!-- Password input -->
-                <div class="form-outline mb-4">
+                <!-- <div class="form-outline mb-4">
                   <input type="password" id="form3Example4" class="form-control" name="Password" ngModel/>
                   <label class="form-label" for="form3Example4">Password</label>
-                </div>
+                </div> -->
+
+                <mdb-form-control style="margin-bottom: 10px;">
+                  <input mdbInput type="text" id="formControlLg" name="Password" ngModel #Password="ngModel" class="form-control form-control-lg" />
+                  <label mdbLabel class="form-label" for="formControlLg">Password</label>
+                </mdb-form-control>
   
                 <!-- Checkbox -->
               

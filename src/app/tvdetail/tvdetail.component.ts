@@ -37,6 +37,7 @@ export class TvdetailComponent implements OnInit {
   public similarShows!: Show[]
   public similarLoaded = false
 
+  public hasCast = false
   openModal() {
     this.modalRef = this.modalService.open(ModalComponent)
   }
@@ -81,6 +82,9 @@ export class TvdetailComponent implements OnInit {
     this.httpClient.get<any>('https://api.themoviedb.org/3/tv/'+this.id+'/credits?api_key='+environment.apiKey+'&language=en-US').subscribe(
       Response => {
         this.people = Response.cast
+        if(this.people.length >= 1) {
+          this.hasCast=true
+        }
       }
     )
 

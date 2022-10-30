@@ -46,6 +46,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { TvListComponent } from './tv-list/tv-list.component';
 import { PersondetailComponent } from './persondetail/persondetail.component';
+import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
 
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
@@ -69,6 +70,7 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     MovieListComponent,
     TvListComponent,
     PersondetailComponent,
+    AdvancedSearchComponent,
    
     
   ],
