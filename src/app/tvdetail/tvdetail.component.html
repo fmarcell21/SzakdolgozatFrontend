@@ -11,7 +11,7 @@
                     <div class="row g-0">
                         <div class="col-md-4">
                             <img
-                            src="https://image.tmdb.org/t/p/w500{{detail.poster_path}}"  class="card-img-top" alt="{{detail.name}}" />
+                            onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  src="https://image.tmdb.org/t/p/w500{{detail.poster_path}}"  class="card-img-top" alt="{{detail.name}}" />
                         </div>
                         <div class="col-md-8 text-light"  >
                             <div class="card-body  card-style" >
@@ -53,7 +53,7 @@
                                 </button>
                                
 
-                                <button class="btn btn-primary  btn-floating" style="float: right;" (click) ="changeColour()">
+                                <button class="btn btn-primary  btn-floating" style="float: right;" (click)="changeColour()">
                                     <i  mdbTooltip="Add to favourites!" href="#" class="fa-solid fa-heart {{tvStatus}}"> </i>
                                 </button>      
                                    
@@ -76,7 +76,7 @@
             <div class="d-flex flex-row flex-nowrap overflow-auto" style="background: transparent;">
                 <div class="card text-white bg-dark mb-3" style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" *ngFor="let person of people">
                     <img
-                        src="https://image.tmdb.org/t/p/w500{{person.profile_path}}"  class="card-img-top" alt={{person.name}} height="300px" width="200px"
+                    onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  src="https://image.tmdb.org/t/p/w500{{person.profile_path}}"  class="card-img-top" alt={{person.name}} height="300px" width="200px"
                     />    
                     <div class="card-footer">
                         <h5 class="card-title" style="text-align: center;">{{person.name}}</h5>     
@@ -97,7 +97,7 @@
                 <div class="row g-0">
                 <div class="col-md-4">
                     <img
-                    src="https://image.tmdb.org/t/p/w500{{season.poster_path}}"
+                    onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'" src="https://image.tmdb.org/t/p/w500{{season.poster_path}}"
                     class="img-fluid rounded-start"
                     />
                 </div>

@@ -5,7 +5,10 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 import { TopComponent } from './top/top.component';
+import { MovieListComponent } from './movie-list/movie-list.component';
+import { TvListComponent } from './tv-list/tv-list.component';
 
 const routes: Routes = [
   {path:'', component: LoginComponent},
@@ -14,7 +17,10 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'top', component: TopComponent},
-  {path: 'profile', component: ProfileComponent}
+  {path: 'profile', component: ProfileComponent},
+  {path: 'search', component: SearchResultComponent},
+  {path: 'movielist', component: MovieListComponent},
+  {path: 'tvlist', component: TvListComponent}
 ];
 
 @NgModule({

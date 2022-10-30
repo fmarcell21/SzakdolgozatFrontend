@@ -41,6 +41,14 @@ import { ProfileComponent } from './profile/profile.component'
 
 import { FormsModule } from '@angular/forms';
 
+import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
+import { SearchResultComponent } from './search-result/search-result.component';
+import { MovieListComponent } from './movie-list/movie-list.component';
+import { TvListComponent } from './tv-list/tv-list.component';
+import { PersondetailComponent } from './persondetail/persondetail.component';
+
+var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
+
 //import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -56,7 +64,12 @@ import { FormsModule } from '@angular/forms';
     EpisodecountComponent,
     TopComponent,
     ProfileComponent,
-    
+    CanvasJSChart,
+    SearchResultComponent,
+    MovieListComponent,
+    TvListComponent,
+    PersondetailComponent,
+   
     
   ],
   imports: [

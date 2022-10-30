@@ -9,7 +9,7 @@
                 
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img
+                            <img onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"
                             src="https://image.tmdb.org/t/p/w500{{detail.poster_path}}"  class="card-img-top" alt="{{detail.title}}" /> 
                         </div>
                         <div class="col-md-8 text-light"  >
@@ -65,7 +65,7 @@
             <div class="d-flex flex-row flex-nowrap overflow-auto" style="background: transparent;">
                 <div class="card text-white bg-dark mb-3" style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" *ngFor="let person of people">
                     <img
-                        src="https://image.tmdb.org/t/p/w500{{person.profile_path}}"  class="card-img-top" alt={{person.name}} height="300px" width="200px"
+                         onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  src="https://image.tmdb.org/t/p/w500{{person.profile_path}}"  class="card-img-top" alt={{person.name}} height="300px" width="200px"
                     />    
                     <div class="card-footer">
                         <h5 class="card-title" style="text-align: center;">{{person.name}}</h5>     

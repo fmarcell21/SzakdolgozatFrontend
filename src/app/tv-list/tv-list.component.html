@@ -1,0 +1,82 @@
+<div class = "container text-gold" style="min-height: 800px; padding-top: 15px;">
+    <!-- sorting button group -->
+    
+        <div class="btn-group" style="margin: auto; display: table;">
+            <a class="btn btn-primary" (click)="redirect('A')">All</a>
+            <a class="btn btn-primary" (click)="redirect('W')">Watching</a>
+            <a class="btn btn-primary" (click)="redirect('D')">Dropped</a>
+            <a class="btn btn-primary" (click)="redirect('H')">On hold</a>
+            <a class="btn btn-primary" (click)="redirect('P')">Plan to watch</a>
+        </div>
+
+        <!-- alt={{movie.title}}, *ngFor="let movie of Movies" {{movie.title}}  -->
+        <div *ngIf="isLoaded" style="margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center;">
+
+            <div class="card text-white bg-dark mb-3 " style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" (click)="onClick('234', 'T') ">
+                <img mdbTooltip="Watching"
+                    onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  src="https://image.tmdb.org/t/p/w500"  class="card-img-top"   
+                />
+                <div class="card-footer">
+                  <h5 class="card-title" style="text-align: center;">Show Title</h5>
+                 
+                </div>
+            </div>
+
+            <div class="card text-white bg-dark mb-3 " style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" (click)="onClick('234', 'T') ">
+                <img mdbTooltip="Watching"
+                    onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  src="https://image.tmdb.org/t/p/w500"  class="card-img-top"   
+                />
+                <div class="card-footer">
+                  <h5 class="card-title" style="text-align: center;">Show Title</h5>
+                 
+                </div>
+            </div>
+            <div class="card text-white bg-dark mb-3 " style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" (click)="onClick('234', 'T') ">
+                <img mdbTooltip="Watching"
+                    onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  src="https://image.tmdb.org/t/p/w500"  class="card-img-top"   
+                />
+                <div class="card-footer">
+                  <h5 class="card-title" style="text-align: center;">Show Title</h5>
+                 
+                </div>
+            </div>
+            <div class="card text-white bg-dark mb-3 " style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" (click)="onClick('234', 'T') ">
+                <img mdbTooltip="Watching"
+                    onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  src="https://image.tmdb.org/t/p/w500"  class="card-img-top"   
+                />
+                <div class="card-footer">
+                  <h5 class="card-title" style="text-align: center;">Show Title</h5>
+                 
+                </div>
+            </div>
+            <div class="card text-white bg-dark mb-3 " style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" (click)="onClick('234', 'T') ">
+                <img mdbTooltip="Watching"
+                    onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  src="https://image.tmdb.org/t/p/w500"  class="card-img-top"   
+                />
+                <div class="card-footer">
+                  <h5 class="card-title" style="text-align: center;">Show Title</h5>
+                 
+                </div>
+            </div>
+            <div class="card text-white bg-dark mb-3 " style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" (click)="onClick('234', 'T') ">
+                <img mdbTooltip="Watching"
+                    onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  src="https://image.tmdb.org/t/p/w500"  class="card-img-top"   
+                />
+                <div class="card-footer">
+                  <h5 class="card-title" style="text-align: center;">Show Title</h5>
+                 
+                </div>
+            </div>
+            <div class="card text-white bg-dark mb-3 " style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" (click)="onClick('234', 'T') ">
+                <img mdbTooltip="Watching"
+                    onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  src="https://image.tmdb.org/t/p/w500"  class="card-img-top"   
+                />
+                <div class="card-footer">
+                  <h5 class="card-title" style="text-align: center;">Show Title</h5>
+                 
+                </div>
+            </div>
+            
+        </div>
+    
+</div>

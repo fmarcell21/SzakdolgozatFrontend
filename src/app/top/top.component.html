@@ -7,7 +7,7 @@
     <div class="d-flex align-items-start mb-3 bg-navy text-gold" style="text-align: center; padding-top: 5px; padding-bottom: 5px;">
         <div class="col-2">Rank</div>
         <div class="col-8">Show</div>
-        <div class="col-2">Status</div>
+        <div class="col-2"></div>
     </div>
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
@@ -16,6 +16,12 @@
           </li>
           <li class="page-item bg-navy">
             <a class="page-link  text-gold"  tabindex="-1" (click)="changePage('first')">1</a>
+          </li>
+          <li class="page-item bg-navy" style="background-color: #2F7D81!important; pointer-events: none;">
+            <a class="page-link  text-gold"> {{page}}</a>
+          </li>
+          <li class="page-item bg-navy">
+            <a class="page-link  text-gold"  tabindex="-1" (click)="changePage('last')">{{totalPages}}</a>
           </li>
           <li class="page-item bg-navy">
             <a class="page-link text-gold" (click)="changePage('next')"><i class="fa-solid fa-arrow-right"></i></a>
@@ -40,10 +46,10 @@
             </div> -->
             <div class="card mb-3 mx-auto" style=" background: transparent; height: 318;"  *ngFor="let detail of Shows">
                 
-                <div class="row g-0">
+                <div class="row g-0" >
                     <div class="col-md-2">
                         <img
-                        src="https://image.tmdb.org/t/p/w500{{detail.poster_path}}"  class="card-img-top" alt="{{detail.name}}" style="max-width:240px ;height:318px;;" />
+                        onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'" src="https://image.tmdb.org/t/p/w500{{detail.poster_path}}"  class="card-img-top" alt="{{detail.name}}" style="max-width:240px ;height:318px;;" />
                     </div>
                     <div class="col-md-10 text-gold"  >
                         <div class="card-body  card-style" >
@@ -72,8 +78,8 @@
           
           <div class="col-2">
             <div style="height: 318px; margin-bottom:16px; align-items: center;" *ngFor="let detail of Shows;">
-                <button id="{{detail.id}}" class="btn btn-primary bg-navy" style=" margin-top: 45%; left: 50%;" >
-                    <i  class=" text-gold"> Status </i>
+                <button id="{{detail.id}}" class="btn btn-primary bg-navy" style=" margin-top: 45%; left: 50%;" (click)="redirect(detail.id)"   >
+                    <i  class=" text-gold"> About </i>
                 </button>
             </div>
           </div>
@@ -86,6 +92,12 @@
           </li>
           <li class="page-item bg-navy">
             <a class="page-link  text-gold"  tabindex="-1" (click)="changePage('first')">1</a>
+          </li>
+          <li class="page-item bg-navy" style="background-color: #2F7D81!important; pointer-events: none;">
+            <a class="page-link  text-gold"> {{page}}</a>
+          </li>
+          <li class="page-item bg-navy">
+            <a class="page-link  text-gold"  tabindex="-1" (click)="changePage('last')">{{totalPages}}</a>
           </li>
           <li class="page-item bg-navy">
             <a class="page-link text-gold" (click)="changePage('next')"><i class="fa-solid fa-arrow-right"></i></a>
@@ -100,7 +112,7 @@
     <div class="d-flex align-items-start mb-3 bg-navy text-gold" style="text-align: center; padding-top: 5px; padding-bottom: 5px;">
         <div class="col-2">Rank</div>
         <div class="col-8">Movie</div>
-        <div class="col-2">Status</div>
+        <div class="col-2"></div>
     </div>
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
@@ -109,6 +121,12 @@
           </li>
           <li class="page-item bg-navy">
             <a class="page-link  text-gold"  tabindex="-1" (click)="changePage('first')">1</a>
+          </li>
+          <li class="page-item bg-navy" style="background-color: #2F7D81!important; pointer-events: none;">
+            <a class="page-link  text-gold"> {{page}}</a>
+          </li>
+          <li class="page-item bg-navy">
+            <a class="page-link  text-gold"  tabindex="-1" (click)="changePage('last')">{{totalPages}}</a>
           </li>
           <li class="page-item bg-navy">
             <a class="page-link text-gold" (click)="changePage('next')"><i class="fa-solid fa-arrow-right"></i></a>
@@ -133,10 +151,10 @@
             </div> -->
             <div class="card mb-3 mx-auto" style=" background: transparent; height: 318;"  *ngFor="let detail of Movies">
                 
-                <div class="row g-0">
+                <div class="row g-0" >
                     <div class="col-md-2">
                         <img
-                        src="https://image.tmdb.org/t/p/w500{{detail.poster_path}}"  class="card-img-top" alt="{{detail.title}}" style="max-width:240px ;height:318px;;" />
+                        onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'" src="https://image.tmdb.org/t/p/w500{{detail.poster_path}}"  class="card-img-top" alt="{{detail.title}}" style="max-width:240px ;height:318px;;" />
                     </div>
                     <div class="col-md-10 text-gold"  >
                         <div class="card-body  card-style" >
@@ -165,8 +183,8 @@
           
           <div class="col-2">
             <div style="height: 318px; margin-bottom:16px; align-items: center;" *ngFor="let detail of Movies;">
-                <button id="{{detail.id}}" class="btn btn-primary bg-navy" style=" margin-top: 45%; left: 50%;" >
-                    <i  class=" text-gold"> Status </i>
+                <button id="{{detail.id}}" class="btn btn-primary bg-navy" style=" margin-top: 45%; left: 50%;" (click)="redirect(detail.id)">
+                    <i  class=" text-gold"> About </i>
                 </button>
             </div>
           </div>
@@ -179,6 +197,12 @@
           </li>
           <li class="page-item bg-navy">
             <a class="page-link  text-gold"  tabindex="-1" (click)="changePage('first')">1</a>
+          </li>
+          <li class="page-item bg-navy" style="background-color: #2F7D81!important; pointer-events: none;">
+            <a class="page-link  text-gold"> {{page}}</a>
+          </li>
+          <li class="page-item bg-navy">
+            <a class="page-link  text-gold"  tabindex="-1" (click)="changePage('last')">{{totalPages}}</a>
           </li>
           <li class="page-item bg-navy">
             <a class="page-link text-gold" (click)="changePage('next')"><i class="fa-solid fa-arrow-right"></i></a>

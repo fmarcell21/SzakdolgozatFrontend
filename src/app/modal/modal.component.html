@@ -10,12 +10,13 @@
             (click)="modalRef.close()"
       ></button>
     </div>
-    <div class="modal-body bg-offwhie" style="height: 175px;">
+    <div class="modal-body bg-offwhie" style="height: 130px;">
 
         <form>
 
             <div class="input-group">
-                <select class="form-control" id="statusFlag" >
+                <select class="form-control" id="statusFlag" name="progressSelect" [(ngModel)] ="progressFlag">
+                    <option value="0" disabled>Select</option>
                     <option value="1">Plan to watch</option>
                     <option value="2">Watching</option>
                     <option value="3">Watched</option>
@@ -71,7 +72,7 @@
         <button type="button" class="btn btn-primary" (click)="modalRef.close()" >
           Cancel
         </button>
-        <button type="button" class="btn btn-primary" (click)="saveProgress()">Save changes</button>
+        <button type="button" class="btn btn-primary" (click)="saveProgress('T')">Save changes</button>
       </div>
 </div>
 
@@ -90,24 +91,25 @@
     </div>
     <div class="modal-body bg-offwhie" >
 
-        <form>
+        
 
-            <div class="input-group">
-                <select class="form-control" id="statusFlag" style="vertical-align: middle;">
-                    <option>Watched</option>
-                    <option>Plan to watch</option>
-                    <option>Dropped</option>
+            <form class="input-group">
+                <select class="form-control" id="statusFlag" style="vertical-align: middle;" name="progressSelect" [(ngModel)] ="progressFlag">
+                    <option value="0" disabled>Select</option>
+                    <option value="1">Plan to watch</option>
+                    <option value="2">Watched</option>                    
+                    <option value="4">Dropped</option>
                 </select>
-            </div>
-            <br>
+            </form>
+           
             
-        </form>
+        
             
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="modalRef.close()" >
           Cancel
         </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" (click)="saveProgress('M')">Save changes</button>
       </div>
 </div>

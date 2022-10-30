@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
 import { Movie } from '../model/Movie';
 import { Show } from '../model/Show';
 
+
+
+
 @Component({
   selector: 'app-top',
   templateUrl: './top.component.html',
@@ -18,7 +21,10 @@ export class TopComponent implements OnInit {
     private httpClient: HttpClient,
     private route: ActivatedRoute,
     private router: Router,
+ 
   ) { }
+
+   
 
     public type: string =""
     public isLoaded: boolean = true
@@ -26,6 +32,9 @@ export class TopComponent implements OnInit {
     public Movies!: Movie[]
     public page: string = "1"
     public pageNum: number = 1
+    public totalPages: string = ""
+  
+  
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -39,6 +48,12 @@ export class TopComponent implements OnInit {
       response => {
         console.log(response)
         this.Shows = response.results
+        this.totalPages = response.total_pages
+        if(Number(this.totalPages) > 500){
+          this.totalPages = '500'
+        } else {
+          this.totalPages = response.total_pages
+        }
         this.isLoaded = true;
     }) 
     } else if(this.type === "M") {
@@ -46,24 +61,37 @@ export class TopComponent implements OnInit {
       response => {
         console.log(response)
         this.Movies = response.results
+        this.totalPages = response.total_pages
+        if(Number(this.totalPages) > 500){
+          this.totalPages = '500'
+        } else {
+          this.totalPages = response.total_pages
+        }
         this.isLoaded = true;
     })
     }
   }
+  
 
+  redirect(id : string) {
+    this.router.navigate(['/details'], {queryParams: {type: this.type, id: id}})
+  }
 
   public changePage(toPage: string) {
     if(toPage === 'prev' && this.pageNum > 1) {
       //console.log('prev')
       this.router.routeReuseStrategy.shouldReuseRoute = () => false;
       this.router.navigate(['/top'], { queryParams: {type: this.type, page: this.pageNum-1 }})
-    } else if(toPage === 'next') {
+    } else if(toPage === 'next' && (this.pageNum) < (Number(this.totalPages))) {
       //console.log('next')
       this.router.routeReuseStrategy.shouldReuseRoute = () => false;
       this.router.navigate(['/top'], { queryParams: {type: this.type, page: this.pageNum+1 }})
     } else if (toPage === 'first') {
       this.router.routeReuseStrategy.shouldReuseRoute = () => false;
       this.router.navigate(['/top'], { queryParams: {type: this.type, page: 1 }})
+    }  else if (toPage === 'last') {
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.navigate(['/top'], {queryParams: {type: this.type, page: this.totalPages}})
     }
   }
 

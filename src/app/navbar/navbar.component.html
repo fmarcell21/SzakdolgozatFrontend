@@ -77,8 +77,11 @@
                 class="form-control rounded"
                 placeholder="Search"
                 aria-label="Search"
+                name = "searchBar"
+                [(ngModel)]="sQuery"
+                (keyup.enter)="search()"
                 />
-                <button class="btn text-gold" type="button">
+                <button class="btn text-gold" type="button" (click)="search()">
                     <i class="fas fa-search"></i>
                 </button>
             </form>

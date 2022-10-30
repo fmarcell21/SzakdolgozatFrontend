@@ -8,5 +8,6 @@ export interface Movie {
     release_date: string,
     title: string,
     backdrop_path: string,
-    genres: Genre[]
+    genres: Genre[],
+    media_type: string
 };

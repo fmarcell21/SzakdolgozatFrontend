@@ -20,7 +20,7 @@ import { EpisodecountComponent } from '../episodecount/episodecount.component';
 
 export class ModalComponent {
 
-  
+  public progressFlag : string ="0"
 
   public isLoaded : boolean = false
 
@@ -30,8 +30,10 @@ export class ModalComponent {
   public Seasons!: Season[]
   public modalType: string = ""
   public tvId: string = ""
-  public SelectedSeason: number = 1
+  public SelectedSeason: number = 1 //on initben lekéri majd a RESTAPIT-tól hogy benen van e már listában az adott cucc, ha igen akkor ezek kapnak értéket attól függően
   public SelectedEpisode: number = 1
+
+  public dummyarray!: Season
   
 
   constructor(
@@ -41,10 +43,7 @@ export class ModalComponent {
     ) {}
 
   ngOnInit() {
-
     
-
-
     this.route.queryParams.subscribe(params => {
       this.modalType = params['type']
       this.tvId = params['id']
@@ -53,16 +52,24 @@ export class ModalComponent {
     if(this.modalType === 'T'){
       this.httpClient.get<any>('https://api.themoviedb.org/3/tv/'+this.tvId+'?api_key='+environment.apiKey+'&language=en-US').subscribe(
         response => {
-          this.NumberOfEpisodes = response.number_of_episodes
-          this.NumberOfSeasons = response.number_of_seasons
-          this.isLoaded = true
-          this.Seasons = response.seasons
-          console.log(response.seasons)
+         this.NumberOfEpisodes = response.number_of_episodes
+         this.NumberOfSeasons = response.number_of_seasons
           
-          if(Number(this.Seasons[0].season_number) === 0){
-            this.SelectedSeason = 1
+         this.Seasons = response.seasons 
+          //console.log(response.seasons)
+          
+          if(Number(response.seasons[0].season_number) === 0){
+            this.isLoaded = true
+            
+            
           } else {
-            this.SelectedSeason = 0
+
+
+           //this.Seasons = this.dummyarray.concat(response.seasons)
+            this.Seasons.unshift(this.dummyarray)
+            
+            console.log(this.Seasons)
+            this.isLoaded = true
           }
           
         }
@@ -70,10 +77,7 @@ export class ModalComponent {
       
     } else if(this.modalType === 'M') {
       this.isLoaded = true;
-    }
-    
-    
-    
+    }    
   }
   
   toNumber(num: string) {
@@ -90,10 +94,15 @@ export class ModalComponent {
   Megnézni, hogy amit fel akar venni az lehetséges-e (16 epizódos évadhoz ne legyen 24 az adatbázisban stb)
   Ha nézi a sorozatot, akkor adatb-ból be is töltse a progresst
   */
-  saveProgress() {
+  saveProgress(type:string) {
+    if(type === 'T'){
+      console.log(this.progressFlag)
+      console.log(this.SelectedSeason)
+      console.log(this.SelectedEpisode)
+    } else if(type === 'M') {
+      console.log(this.progressFlag)
+    }
     
-    console.log(this.SelectedSeason)
-    console.log(this.SelectedEpisode)
   }
  
  /* public updateEpisodeCount(SeasonNum: number){

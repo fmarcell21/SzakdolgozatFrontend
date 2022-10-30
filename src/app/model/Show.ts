@@ -12,5 +12,6 @@ export interface Show {
     next_episode_to_air: string,
     in_production: string,
     genres: Genre[],
-    seasons: Season[]
+    seasons: Season[],
+    media_type: string
 }
