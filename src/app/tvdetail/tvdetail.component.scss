@@ -36,9 +36,13 @@
         //height: 100px;
     }
     .bottom-layer {
-        padding-top: 25px;
-        background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%,  rgba(0,0,0,0.6) 100%); 
-        margin-bottom: 0%;
+        //padding-top: 15px;
+        background: rgb(0,0,0,0.225);
+        background: linear-gradient(180deg, rgba(0,0,0,0.225) 0%, rgba(0,0,0,0.5) 100%); 
         
     }
+}
+
+.hoverable:hover {
+    transform: scale(1.05);
 }

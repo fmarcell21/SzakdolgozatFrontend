@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'search', component: SearchResultComponent},
   {path: 'movielist', component: MovieListComponent},
-  {path: 'tvlist', component: TvListComponent}
+  {path: 'tvlist', component: TvListComponent},
 ];
 
 @NgModule({

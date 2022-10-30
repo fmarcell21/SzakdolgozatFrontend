@@ -38,3 +38,8 @@
 .tvWatched {
     color: pink;
 }
+
+.hoverable:hover{
+    transform: scale(1.05);
+   //zoom:normal;
+ }

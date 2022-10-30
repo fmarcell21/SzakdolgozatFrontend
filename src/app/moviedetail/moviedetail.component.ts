@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from '../model/Movie';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Route, ActivatedRoute } from '@angular/router';
+import { Route, ActivatedRoute, Router } from '@angular/router';
 import { Person } from '../model/Person';
 
 import { ModalComponent } from '../modal/modal.component';
@@ -20,7 +20,8 @@ export class MoviedetailComponent implements OnInit {
   constructor(
     private httpClient: HttpClient,
     private route: ActivatedRoute,
-    private modalService: MdbModalService
+    private modalService: MdbModalService,
+    private router: Router
     
   ) { }
   public isLoaded: boolean = false
@@ -28,6 +29,12 @@ export class MoviedetailComponent implements OnInit {
   public id: string | undefined
   public people!: Person[];
   public tvStatus: string = 'tvNotWatched';
+
+  public recommendedLoaded = false
+  public RecommendedMovies!: Movie[];
+
+  public similarMovies!: Movie[]
+  public similarLoaded = false
  
   openModal(){
     this.modalRef = this.modalService.open(ModalComponent)
@@ -40,6 +47,26 @@ export class MoviedetailComponent implements OnInit {
       this.id = params['id']
      // console.log(this.id)
     })
+
+    this.httpClient.get<any>('https://api.themoviedb.org/3/movie/'+this.id+'/recommendations?api_key='+environment.apiKey+'&language=en-US&page=1').subscribe(
+      response => {
+        this.RecommendedMovies = response.results
+        //console.log(this.RecommendedMovies)
+        if(this.RecommendedMovies.length >= 1){
+          this.recommendedLoaded = true
+        }
+      }
+    )
+
+    this.httpClient.get<any>('https://api.themoviedb.org/3/movie/'+this.id+'/similar?api_key='+environment.apiKey+'&language=en-US&page=1').subscribe(
+      response => {
+        this.similarMovies = response.results
+        //console.log(this.similarMovies)
+        if(this.similarMovies.length >= 1){
+          this.similarLoaded = true
+        }
+      }
+    )
 
     this.httpClient.get<any>('https://api.themoviedb.org/3/movie/'+this.id+'?api_key='+environment.apiKey+'&language=en-US').subscribe(
         response => {
@@ -65,6 +92,14 @@ export class MoviedetailComponent implements OnInit {
     } 
     
   }
+  onClick(detailId: string, detailType: string){
+    // this.router.navigateByUrl('/details'); ///'+detailType+detailId
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.navigate(['/details'], { queryParams: {type: detailType, id: detailId }})
+    // console.log(detailId);
+     //console.log(detailType)
+    // this.detailservice.setDetail(detailId, detailType)
+   }
   /*getUrl(){
     console.log
     return "url('https://image.tmdb.org/t/p/w500" + this.detail.backdrop_path +"')"

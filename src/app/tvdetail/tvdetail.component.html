@@ -1,6 +1,4 @@
 
-    <!-- style="--backgroundUrl: detail.backdrop_path" custom-background -->
-    <!-- [ngStyle]="{'background-image': getUrl()}"  -->
  
     <div class="top-layer">
 
@@ -21,23 +19,12 @@
 
                                 <small class="card-style">{{detail.first_air_date}}</small>
                                 <hr>
-                                <p class="card-text card-style" style="font-size: 100%;">
+                                <p class="card-text card-style" style="font-size: 100%; max-height: 300px; overflow: auto;">
                                     {{detail.overview}}
                                 </p>
                             
                             </div>
-                            <!-- <div class="card-footer text-center text-muted footer-pos" >
-                                <span class="badge badge-primary btn-outline-primary" style="max-width: 720px; background:transparent; padding: 5px; margin-inline: 5px; float: left;" *ngFor ="let genre of detail.genres">
-                                    {{genre.name}}
-                                </span>
-                                
-                                    <button class="btn btn-primary btn-floating"style=" float: right; margin-left: 5px;" >
-                                        <i href="#" class="fa-solid fa-book" > </i>
-                                    </button>
-                                    <button class="btn btn-primary btn-floating" style="float: right;">
-                                        <i href="#" class="fa-solid fa-check"> </i>
-                                    </button>                                
-                            </div> -->
+      
                         </div>
                     </div>
                 </div>
@@ -73,8 +60,9 @@
     </div>
     <div class="transition-layer">
         <div class="container" style="max-width: 840px; text-align: center;" >        
+            <h5 class="text-gold">Cast</h5>
             <div class="d-flex flex-row flex-nowrap overflow-auto" style="background: transparent;">
-                <div class="card text-white bg-dark mb-3" style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" *ngFor="let person of people">
+                <div class="card text-white bg-dark mb-3 hoverable" style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" *ngFor="let person of people" (click)="onClick(person.id, 'P')">
                     <img
                     onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  src="https://image.tmdb.org/t/p/w500{{person.profile_path}}"  class="card-img-top" alt={{person.name}} height="300px" width="200px"
                     />    
@@ -86,64 +74,63 @@
             </div>  
         </div>
         
+        <div class="container" style="padding-top: 55px; padding-bottom: 15px;max-width: 840px; text-align: center;" *ngIf="recommendedLoaded" >        
+            <h5 class="text-gold">Recommended shows</h5>
+            <div class="d-flex flex-row flex-nowrap overflow-auto " style="background: transparent;">
+                <div class="card text-white bg-dark mb-3 hoverable" style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" *ngFor="let rec of RecommendedShows" (click)="onClick(rec.id, 'T')">
+                    <img
+                         onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  src="https://image.tmdb.org/t/p/w500{{rec.poster_path}}"  class="card-img-top" alt={{rec.name}} height="300px" width="200px"
+                    />    
+                    <div class="card-footer">
+                        <h5 class="card-title" style="text-align: center;">{{rec.name}}</h5>              
+                    </div>
+                </div>           
+            </div>  
+        </div>
 
+        <div class="container" style="padding-top: 55px; padding-bottom: 15px;max-width: 840px; text-align: center;" *ngIf="similarLoaded" >        
+            <h5 class="text-gold">Similar shows</h5>
+            <div class="d-flex flex-row flex-nowrap overflow-auto " style="background: transparent;">
+                <div class="card text-white bg-dark mb-3 hoverable" style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" *ngFor="let sim of similarShows" (click)="onClick(sim.id, 'T')">
+                    <img
+                         onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  src="https://image.tmdb.org/t/p/w500{{sim.poster_path}}"  class="card-img-top" alt={{sim.name}} height="300px" width="200px"
+                    />    
+                    <div class="card-footer">
+                        <h5 class="card-title" style="text-align: center;">{{sim.name}}</h5>              
+                    </div>
+                </div>           
+            </div>  
+        </div>
 
 
     </div>
     
-    <div class="bottom-layer " *ngIf="isLoaded" style="padding-bottom: 25px;">
-        <div class="container" *ngFor ="let season of detail.seasons">        
-            <div class="card mb-3" style="max-width: 540px; background:transparent; margin-left: auto; margin-right: auto;" *ngIf="toNumber(season.season_number) !== 0" >
-                <div class="row g-0">
-                <div class="col-md-4">
-                    <img
-                    onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'" src="https://image.tmdb.org/t/p/w500{{season.poster_path}}"
-                    class="img-fluid rounded-start"
-                    />
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body text-light" style="font-size:95%;">
-                        <h5 class="card-title">{{season.name}}</h5>
-                        <p class="card-text">
-                            {{season.overview}}
-                        </p>
+    
+
+<div class="bottom-layer">
+        <div class="bottom-layer " *ngIf="isLoaded" style="padding-bottom: 25px;">
+            <div class="container" *ngFor ="let season of detail.seasons" style="padding-top: 15px;">        
+                <div class="card mb-3" style="max-width: 540px; background:transparent; margin-left: auto; margin-right: auto;" *ngIf="toNumber(season.season_number) !== 0" >
+                    <div class="row g-0">
+                    <div class="col-md-4">
+                        <img
+                        onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'" src="https://image.tmdb.org/t/p/w500{{season.poster_path}}"
+                        class="img-fluid rounded-start"
+                        />
                     </div>
-                    <!-- <div class="card-footer">
-                        <button type="button" class="btn btn-primary btn-floating" style=" float: right; margin-left: 5px;" (click) = "openModal()" >
-                            <i href="#" class="fa-solid fa-book" > </i>
-                        </button>
-                    </div> -->
+                    <div class="col-md-8">
+                        <div class="card-body text-light" style="font-size:95%;">
+                            <h5 class="card-title">{{season.name}}</h5>
+                            <p class="card-text">
+                                {{season.overview}}
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                </div>
-                <!-- <div class="card mb-3 mx-auto" style="width: 540px; background: transparent; max-height: 75px;"  >                         
-                    <div class="  card-style" style="padding: 5px;" >
-
-                        <button type="button" class="btn btn-primary btn-floating" style=" float: right; margin-left: 5px;" (click) = "openModal()" >
-                            <i href="#" class="fa-solid fa-book" > </i>
-                        </button>
-                       
-
-                        <button class="btn btn-primary  btn-floating" style="float: right;" (click) ="changeColour()">
-                            <i  mdbTooltip="Add to favourites!" href="#" class="fa-solid fa-heart {{tvStatus}}"> </i>
-                        </button>      
-                           
-                    </div>  
-        </div> -->
+            
 
             </div>
         </div>
-        
-
     </div>
-
-    <!-- <div class="bottom-layer">
-        <mdb-carousel [controls] ="true">
-            <mdb-carousel-item *ngFor = "let picture of pictures">
-                <img
-                  src="https://image.tmdb.org/t/p/w500{{picture.file_path}}"
-                  class="d-block w-100"
-                />
-              </mdb-carousel-item>
-        </mdb-carousel>
-    </div> -->
+</div>
    

@@ -1,1 +1,53 @@
-<p>persondetail works!</p>
+<div class="top-layer">
+
+    <div class="container" style="padding-top: 15px;" *ngIf="isLoaded">
+
+        <div class="card mb-3 mx-auto" style="max-width: 840px; background: transparent;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"
+                    src="https://image.tmdb.org/t/p/w500{{detail.profile_path}}"  class="card-img-top" alt="{{detail.name}}" /> 
+                </div>
+                <div class="col-md-8 text-light"  >
+                    <div class="card-body  card-style" style="height: 420px; ">
+                        <h5 class="card-title ">{{detail.name}}</h5>
+                        <h6 class="card-style text-success text-bold" style="float:right ; " *ngIf="detail.deathday === null" >Alive</h6>
+                        <h6 class="card-style text-danger text-bold" style="float:right ; " mdbTooltip="{{detail.deathday}}" *ngIf="detail.deathday !== null">Dead</h6>
+                        <small class="card-style" *ngIf="detail.birthday !== null">{{detail.birthday}}</small>
+                        <small class="card-style" *ngIf="detail.birthday === null">N/A</small>
+                        <hr>                        
+                        <p class="card-text card-style" style="font-size: 100%; overflow: auto; max-height: 300px;">
+                            {{detail.biography}}
+                        </p>               
+                                          
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3 mx-auto" style="max-width: 840px; background: transparent; max-height: 75px;"  >
+            <div class="card-style" style="padding: 5px">        
+                <button class="btn btn-primary btn-floating" style="float: right; " (click) ="changeColour()">
+                    <i href="#" class="fa-solid fa-heart {{favStatus}}"> </i>
+                </button>   
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="transition-layer">
+    <div class="container" style="padding-bottom: 15px;max-width: 840px; text-align: center; " *ngIf="creditsLoaded" >        
+        <h5 class="text-gold">Credits</h5>
+        <div class="d-flex flex-row flex-nowrap overflow-auto " style="background: transparent; " >
+            <div class="card text-white bg-dark mb-3 hoverable" style="max-width: 200px; flex-shrink: 0; margin-left: 0.5rem;" *ngFor="let rec of credits" (click)="onClick(rec.id, rec.media_type)" mdbTooltip="{{rec.name || rec.title}}">
+                <img
+                onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  src="https://image.tmdb.org/t/p/w500{{rec.poster_path}}"  class="card-img-top" alt={{rec.title}} height="300px" width="200px"
+                />  
+                <div class="card-body">                    
+                    <small *ngIf="rec.character !== ''">{{rec.character}}</small>     
+                    <small *ngIf="rec.character === ''">N/A</small>         
+                </div>
+            </div>           
+        </div>  
+    </div>
+</div>

@@ -88,6 +88,8 @@ export class SearchResultComponent implements OnInit {
       this.router.navigate(['/details'], {queryParams: {type: "T", id: id}})
     } else if ( mtype === "movie") {
       this.router.navigate(['/details'], {queryParams: {type: "M", id: id}})
+    } else if ( mtype ==='person'){
+      this.router.navigate(['/details'], {queryParams: {type: 'P', id: id}})
     }
     
   }
