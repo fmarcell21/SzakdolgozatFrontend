@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
       //this.sQuery = this.sQuery.replace(' ','+')
       this.sQuery = this.sQuery.replace(/ /g, '+')
       console.log(this.sQuery)
-      this.router.navigate(['/search'], {queryParams: {query: this.sQuery, page: 1}})
+      this.router.navigate(['/search'], {queryParams: {type: 'DEF',query: this.sQuery, page: 1}})
       this.sQuery = ''
 
     }
