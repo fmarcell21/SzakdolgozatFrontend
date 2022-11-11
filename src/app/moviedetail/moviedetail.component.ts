@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Route, ActivatedRoute, Router } from '@angular/router';
 import { Person } from '../model/Person';
+import { catchError } from 'rxjs';
 
 import { ModalComponent } from '../modal/modal.component';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
@@ -82,18 +83,66 @@ export class MoviedetailComponent implements OnInit {
         }
       }
     )
+
+    this.httpClient.get<any>("http://localhost:8080/api/movie/find/"+ localStorage.getItem("id") +"/"+ this.id).subscribe(
+      Response => {
+        if(Response[0] !== undefined){
+          if(Response[0].favflag === "true"){
+          this.tvStatus = 'tvWatched'
+          
+        } else {
+          this.tvStatus = 'tvNotWatched'
+        }
+        console.log(Response)
+        console.log(this.tvStatus)
+        }
+        
+        
+      }
+    )
   
     
   }
   changeColour() {
+    
+
     if(this.tvStatus === 'tvNotWatched'){
+
+      this.updateFav().subscribe()
+     
       this.tvStatus = 'tvWatched'
       console.log(this.tvStatus)
+
     } else {
+      
+      this.updateFav().subscribe()
+
       this.tvStatus = 'tvNotWatched'
       console.log(this.tvStatus)
     } 
     
+  }
+
+  updateFav(){
+    const headers = {'content-type': 'application/json'} 
+    
+
+    var jsonData = {
+      "movid": this.id
+    }
+
+    const body = JSON.stringify(jsonData);
+
+    console.log(this.id)
+    console.log(localStorage.getItem("id"))
+    console.log(jsonData)
+
+    return this.httpClient.put("http://localhost:8080/api/movie/updateFav/"+localStorage.getItem("id"), body, {headers}).pipe(
+      catchError((err) => {
+        window.alert("Fav change failed");
+        throw err
+      }))
+
   }
   onClick(detailId: string, detailType: string){
     // this.router.navigateByUrl('/details'); ///'+detailType+detailId

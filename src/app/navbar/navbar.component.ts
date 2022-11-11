@@ -32,4 +32,12 @@ export class NavbarComponent implements OnInit {
     }
     
   }
+   logout(){
+    localStorage.setItem("isLogged", "false")
+    localStorage.setItem("token","");
+    localStorage.setItem("id","");
+    localStorage.setItem("username","");
+    localStorage.setItem("email","");
+    this.router.navigate(['/login'])
+   }
 }

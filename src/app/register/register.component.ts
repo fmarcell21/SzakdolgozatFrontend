@@ -3,6 +3,7 @@ import { Movie } from '../model/Movie';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -38,6 +39,28 @@ export class RegisterComponent implements OnInit {
   //Megnézi hogy valid e az input (email email-e) -> api register (talán egy get az emailre és a username-re hogy benne van e már az adatbázisban), utánna egy post (felregisztrál) -> navigate to home
   register(reg:NgForm){
     console.log(reg.value)
+    this.handleRegister(reg).subscribe(result => {
+      console.warn(result)
+      window.alert(result)
+    })
+  }
+
+  handleRegister(data:NgForm){
+    const headers = {'content-type': 'application/json'}
+    var jsonData = {
+      "username": data.value["Username"],
+      "password":data.value["Password"],
+      "email": data.value["Email"]
+    }
+    const body = JSON.stringify(jsonData);
+
+   return this.httpClient.post("http://localhost:8080/api/secure/register",body,{ headers, responseType: 'text' }).pipe (
+     catchError((err) => {
+       console.error(err);
+       window.alert("Registration failed");
+       throw err;
+     })
+   )
   }
 
 }

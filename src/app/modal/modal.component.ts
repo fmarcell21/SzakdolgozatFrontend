@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Show } from '../model/Show';
 import { environment } from 'src/environments/environment';
 import { Season } from '../model/Season';
-
+import { catchError } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 
 import { EpisodecountComponent } from '../episodecount/episodecount.component';
@@ -21,7 +21,7 @@ import { EpisodecountComponent } from '../episodecount/episodecount.component';
 export class ModalComponent {
 
   public progressFlag : string ="0"
-
+  public found: boolean  = false
   public isLoaded : boolean = false
 
   public NumberOfSeasons : string = ""
@@ -52,6 +52,36 @@ export class ModalComponent {
     if(this.modalType === 'T'){
       this.httpClient.get<any>('https://api.themoviedb.org/3/tv/'+this.tvId+'?api_key='+environment.apiKey+'&language=en-US').subscribe(
         response => {
+
+          this.httpClient.get<any>('http://localhost:8080/api/tv/find/'+localStorage.getItem("id")+"/"+this.tvId).subscribe(
+            response => {
+              console.log(response[0])
+              if((response[0]) !== undefined){
+                switch (response[0].flag) {
+                  case 'P':
+                    this.progressFlag = "1"                    
+                    break;
+                  case 'F':
+                    this.progressFlag = "3"                    
+                    break;
+                  case 'H':
+                      this.progressFlag = "5"                    
+                    break;
+                  case 'W':
+                    this.progressFlag = "2"
+                    break;
+                  case 'D':
+                    this.progressFlag = "4"
+                    break;
+                }
+
+                this.found = true
+                this.SelectedEpisode = response[0].episode_count
+                this.SelectedSeason = response[0].season_count
+              }
+              
+            })
+
          this.NumberOfEpisodes = response.number_of_episodes
          this.NumberOfSeasons = response.number_of_seasons
           
@@ -64,7 +94,6 @@ export class ModalComponent {
             
           } else {
 
-
            //this.Seasons = this.dummyarray.concat(response.seasons)
             this.Seasons.unshift(this.dummyarray)
             
@@ -76,10 +105,42 @@ export class ModalComponent {
       )
       
     } else if(this.modalType === 'M') {
+      this.httpClient.get<any>('http://localhost:8080/api/movie/find/'+localStorage.getItem("id")+"/"+this.tvId).subscribe(
+        response => {
+          //console.log(response[0].flag)
+          if((response[0]) !== undefined){
+            switch (response[0].flag) {
+              case 'P':
+                this.progressFlag = "1"
+                
+                break;
+              case 'W':
+                this.progressFlag = "2"
+                break;
+              case 'D':
+                this.progressFlag = "4"
+                break;
+            }
+           // console.log(this.found)
+            this.found = true;
+           // console.log(this.found)
+          }
+          
+        }
+      )
       this.isLoaded = true;
     }    
   }
   
+  //              "0"Select
+ // <option value="1">Plan to watch</option> P
+  //<option value="2">Watched</option>   W      
+  // On hold 3 F           
+  //<option value="4">Dropped</option> D
+
+
+
+
   toNumber(num: string) {
     return Number(num)
   }
@@ -99,10 +160,68 @@ export class ModalComponent {
       console.log(this.progressFlag)
       console.log(this.SelectedSeason)
       console.log(this.SelectedEpisode)
+
+
+
+
     } else if(type === 'M') {
-      console.log(this.progressFlag)
+      //console.log(this.progressFlag)
+      var  tempFlag 
+      switch (this.progressFlag) {
+        case "1":
+          tempFlag = "P"
+          break
+        case "2":
+          tempFlag = "W"
+          break
+        case "4": 
+          tempFlag = "D"
+      }
+
+      if(this.found !== true){     
+
+        this.handleMovieSaveProgress(tempFlag).subscribe()
+        
+      } else {
+
+       this.handleMovieUpdateProgress(tempFlag).subscribe()
+      }
     }
     
+  }
+
+  handleMovieSaveProgress(Flag:any){
+    const headers = {'content-type': 'application/json'}
+    var jsonData = {
+      "movid": this.tvId,
+      "flag": Flag,
+    }
+    const body = JSON.stringify(jsonData);
+
+   return this.httpClient.post("http://localhost:8080/api/movie/"+localStorage.getItem("id")+"/create",body,{ headers, responseType: 'text' }).pipe (
+     catchError((err) => {
+       console.error(err);
+       window.alert(" Progress creation failed!");
+       throw err;
+     })
+   )
+  }
+
+  handleMovieUpdateProgress(Flag:any){
+    const headers = {'content-type': 'application/json'}
+    var jsonData = {
+      "movid": this.tvId,
+      "flag": Flag,
+    }
+    const body = JSON.stringify(jsonData);
+
+   return this.httpClient.put("http://localhost:8080/api/movie/updateFlag/"+localStorage.getItem("id"),body,{ headers, responseType: 'text' }).pipe (
+     catchError((err) => {
+       console.error(err);
+       window.alert(" Progress update failed!");
+       throw err;
+     })
+   )
   }
  
  /* public updateEpisodeCount(SeasonNum: number){

@@ -36,6 +36,8 @@ import { RegisterComponent } from './register/register.component';
 import { EpisodecountComponent } from './episodecount/episodecount.component';
 import { TopComponent } from './top/top.component';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ProfileComponent } from './profile/profile.component'
 
@@ -47,6 +49,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { TvListComponent } from './tv-list/tv-list.component';
 import { PersondetailComponent } from './persondetail/persondetail.component';
 import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
+import { JwtInterceptor } from './jwtInterceptor';
 
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
@@ -99,7 +102,7 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     
     
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
