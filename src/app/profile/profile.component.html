@@ -1,4 +1,4 @@
-<div style="justify-content: center!important; display: grid;">
+<div style="justify-content: center!important; display: grid;" *ngIf="isLoaded">
 <div class="d-flex align-items-center " style="margin-bottom:0px; height: 880px; padding-right: 25px; max-width: 1903px; min-width: 1903px;">
     <div class="col-2 mb-1" style="padding: 25px;  margin-top: 10px;">
 
@@ -24,7 +24,7 @@
                     </div>
                 </div>
 
-                <div class="card-body" >
+                <!-- <div class="card-body" >
                     <div style="display:inline-block; border-bottom: 1px solid rgba(0,0,0, 0.125);">                  
                         <span style="display:block; width:50%; float:left; text-align: left;">Gender</span>                    
                         <span style="display:block; width:50%; float:right; text-align: right;">Male</span>
@@ -34,11 +34,8 @@
                         
                         <span style="display:block; width:50%; float:left; text-align: left;">Joined</span>                    
                         <span style="display:block; width:50%; float:right; text-align: right;">2022.08.23</span>
-                    </div>
-                    
-
-
-                </div>
+                    </div> 
+                </div> -->
             </div>
         </div>
 
@@ -49,39 +46,39 @@
                 <div class="row bg-navy" style="height: 425px; padding: 15px;">
                     <div class="col-4">                
                         <h3 style="max-height:15%;">TV Stats</h3>
-                        <div style="max-height: 90%;">
-                            <ul>
+                        <div style="max-height: 90%;"*ngIf="tvLoaded">
+                            <ul >
                                 <li class="w">
                                     <span style="display:block; width:50%; float:left; text-align: left;">Watching:</span>                    
-                                    <span style="display:block; width:50%; float:right; text-align: right;">12</span>
+                                    <span style="display:block; width:50%; float:right; text-align: right;">{{TvCount.W}}</span>
                                 </li>
                                 <li class="f"> 
                                     <span style="display:block; width:50%; float:left; text-align: left;">Finished:</span>                    
-                                    <span style="display:block; width:50%; float:right; text-align: right;">12</span>
+                                    <span style="display:block; width:50%; float:right; text-align: right;">{{TvCount.F}}</span>
                                 </li>
                                 <li class="d">
                                     <span style="display:block; width:50%; float:left; text-align: left;">Dropped:</span>                    
-                                    <span style="display:block; width:50%; float:right; text-align: right;">12</span>
+                                    <span style="display:block; width:50%; float:right; text-align: right;">{{TvCount.D}}</span>
                                 </li>
                                 <li class="p">
                                     <span style="display:block; width:50%; float:left; text-align: left;">Plan to watch:</span>                    
-                                    <span style="display:block; width:50%; float:right; text-align: right;">12</span>
+                                    <span style="display:block; width:50%; float:right; text-align: right;">{{TvCount.P}}</span>
                                 </li>
                                 <li class="o">
                                     <span style="display:block; width:50%; float:left; text-align: left;">On hold:</span>                    
-                                    <span style="display:block; width:50%; float:right; text-align: right;">12</span>
+                                    <span style="display:block; width:50%; float:right; text-align: right;">{{TvCount.H}}</span>
                                 </li>
                             </ul>
 
                             <ul style="margin-top: 150px;">
                                 <li>
                                     <span style="display:block; width:50%; float:left; text-align: left;">Total watched:</span>                    
-                                    <span style="display:block; width:50%; float:right; text-align: right;">12123</span>
+                                    <span style="display:block; width:50%; float:right; text-align: right;">{{TvCount.All}}</span>
                                 </li>                            
                             </ul>
                         </div>
                     </div>
-                    <div class="col-8" style="padding: 15px;">
+                    <div class="col-8" style="padding: 15px;" *ngIf="tvLoaded">
                         
                             <canvasjs-chart [options]="tvOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>    
                                                
@@ -91,39 +88,40 @@
                <div class="row bg-navy" style="height: 425px; padding: 15px;">
                     <div class="col-4">                
                         <h3 style="max-height:15%;">Movie Stats</h3>
-                        <div style="max-height: 90%;">
-                            <ul>
-                                <li class="w">
+                        <div style="max-height: 90%;"*ngIf="movieLoaded">
+                            <ul >
+                                <!-- <li class="w">
                                     <span style="display:block; width:50%; float:left; text-align: left;">Watching:</span>                    
                                     <span style="display:block; width:50%; float:right; text-align: right;">12</span>
-                                </li>
+                                </li> -->
                                 <li class="f"> 
                                     <span style="display:block; width:50%; float:left; text-align: left;">Finished:</span>                    
-                                    <span style="display:block; width:50%; float:right; text-align: right;">12</span>
+                                    <span style="display:block; width:50%; float:right; text-align: right;">{{MovieCount.W}}</span>
                                 </li>
                                 <li class="d">
                                     <span style="display:block; width:50%; float:left; text-align: left;">Dropped:</span>                    
-                                    <span style="display:block; width:50%; float:right; text-align: right;">12</span>
+                                    <span style="display:block; width:50%; float:right; text-align: right;">{{MovieCount.D}}</span>
                                 </li>
+                                
                                 <li class="p">
                                     <span style="display:block; width:50%; float:left; text-align: left;">Plan to watch:</span>                    
-                                    <span style="display:block; width:50%; float:right; text-align: right;">12</span>
+                                    <span style="display:block; width:50%; float:right; text-align: right;">{{MovieCount.P}}</span>
                                 </li>
-                                <li class="o">
+                                <!-- <li class="o">
                                     <span style="display:block; width:50%; float:left; text-align: left;">On hold:</span>                    
                                     <span style="display:block; width:50%; float:right; text-align: right;">12</span>
-                                </li>
+                                </li> -->
                             </ul>
 
-                            <ul style="margin-top: 150px;">
+                            <ul style="margin-top: 201.2px;">
                                 <li>
                                     <span style="display:block; width:50%; float:left; text-align: left;">Total watched:</span>                    
-                                    <span style="display:block; width:50%; float:right; text-align: right;">12123</span>
+                                    <span style="display:block; width:50%; float:right; text-align: right;">{{MovieCount.All}}</span>
                                 </li>                            
                             </ul>
                         </div>
                     </div>
-                    <div class="col-8" style="padding: 15px;">
+                    <div class="col-8" style="padding: 15px;" *ngIf="movieLoaded">
                         
                             <canvasjs-chart [options]="movieOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>    
                                                
@@ -136,32 +134,35 @@
 
                 <div class="row" style="height: 275px; padding: 5px; margin-bottom: 3px;">
                     <h3 style="margin-top: 15px; margin-left:15px;">Favourite Shows</h3>
-                    <div class="d-flex flex-row flex-nowrap overflow-auto">
-                        <div>
-                            <img (click)="redirect('id')"
-                            onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  class="hover-image" mdbTooltip="TV Show Title" src="https://image.tmdb.org/t/p/w500/aGBuiirBIQ7o64FmJxO53eYDuro.jpg" style="max-width: 100px; max-height:150px; border-radius: 5px; flex-shrink: 0; margin-left: 0.5rem;"  alt="" 
-                            />
-                            
-                           
+                    
+                        <div class="d-flex flex-row flex-nowrap overflow-auto" >
+                            <div>
+                                <img (click)="redirect(show.id, 'T')" *ngFor="let show of FavTv"
+                                onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  class="hover-image" mdbTooltip="{{show.name}}" src="https://image.tmdb.org/t/p/w500{{show.poster_path}}" style="max-width: 100px; max-height:150px; border-radius: 5px; flex-shrink: 0; margin-left: 0.5rem;"  alt="" 
+                                /> 
+                            </div>
                         </div>
-                    </div>
+                        
+           
 
                 </div>
                 <div class="row" style="height: 275px; padding: 5px; margin-bottom: 3px;">
                     <h3 style="margin-top: 15px; margin-left:15px;">Favourite Movies</h3>
                     <div class="d-flex flex-row flex-nowrap overflow-auto">
-                        <img (click)="redirect('id')"
-                        onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  class="hover-image" mdbTooltip="Movie Title" src="https://image.tmdb.org/t/p/w500/aGBuiirBIQ7o64FmJxO53eYDuro.jpg" style="max-width: 100px; max-height:150px; border-radius: 5px; flex-shrink: 0; margin-left: 0.5rem;"  alt="" 
+                        <img (click)="redirect(movie.id, 'M')" *ngFor="let movie of FavMovies"
+                        onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  class="hover-image" mdbTooltip="{{movie.title}}" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" style="max-width: 100px; max-height:150px; border-radius: 5px; flex-shrink: 0; margin-left: 0.5rem;"  alt="" 
                         />
+                       
                     </div>
+                  
 
                 </div>
                 <div class="row" style="height: 275px; padding: 5px; margin-bottom: 3px;">
                     <h3 style="margin-top: 15px; margin-left:15px;">Favourite People</h3>
                     <div class="d-flex flex-row flex-nowrap overflow-auto">
                         
-                        <img (click)="redirect('id')"
-                        onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  class="hover-image" mdbTooltip="Person Name" src="https://image.tmdb.org/t/p/w500/aGBuiirBIQ7o64FmJxO53eYDuro.jpg" style="max-width: 100px; max-height:150px; border-radius: 5px; flex-shrink: 0; margin-left: 0.5rem;"  alt="" 
+                        <img (click)="redirect(person.id, 'P')" *ngFor="let person of FavPerson"
+                        onerror="this.src='https://feb.kuleuven.be/drc/LEER/visiting-scholars-1/image-not-available.jpg/image'"  class="hover-image" mdbTooltip="{{person.name}}" src="https://image.tmdb.org/t/p/w500{{person.profile_path}}" style="max-width: 100px; max-height:150px; border-radius: 5px; flex-shrink: 0; margin-left: 0.5rem;"  alt="" 
                         />
                        
                     </div>

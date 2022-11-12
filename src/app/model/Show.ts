@@ -13,5 +13,6 @@ export interface Show {
     in_production: string,
     genres: Genre[],
     seasons: Season[],
-    media_type: string
+    media_type: string,
+    Flag: string,
 }

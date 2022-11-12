@@ -53,6 +53,8 @@ export class MovieListComponent implements OnInit {
                     break
                   case "D": Object.assign(this.Details[i], {Flag: "Dropped"})
                     break
+                  case "O": Object.assign(this.Details[i], {Flag: "Favourited only"})
+                    break
                 }       
                   
             })
@@ -81,6 +83,7 @@ export class MovieListComponent implements OnInit {
                       break
                     case "D": Object.assign(this.Details[i], {Flag: "Dropped"})
                       break
+                    
                   }       
                     
               })
