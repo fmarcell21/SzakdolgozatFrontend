@@ -33,6 +33,9 @@ export class ModalComponent {
   public SelectedSeason: number = 1 //on initben lekéri majd a RESTAPIT-tól hogy benen van e már listában az adott cucc, ha igen akkor ezek kapnak értéket attól függően
   public SelectedEpisode: number = 1
 
+  public tempSeason!: number
+  public tempEpisode!: number
+
   public dummyarray!: Season
   
 
@@ -78,6 +81,9 @@ export class ModalComponent {
                 this.found = true
                 this.SelectedEpisode = response[0].episode_count
                 this.SelectedSeason = response[0].season_count
+
+                this.tempEpisode = response[0].episode_count
+                this.tempSeason = response[0].season_count
               }
               
             })
@@ -156,17 +162,54 @@ export class ModalComponent {
   Ha nézi a sorozatot, akkor adatb-ból be is töltse a progresst
   */
   saveProgress(type:string) {
+    var  tempFlag 
+    
     if(type === 'T'){
       console.log(this.progressFlag)
       console.log(this.SelectedSeason)
       console.log(this.SelectedEpisode)
+      switch (this.progressFlag) {
+        case '1':
+          tempFlag = "P"                    
+          break;
+        case '3':
+          tempFlag = "F"                    
+          break;
+        case '5':
+          tempFlag = "H"                    
+          break;
+        case '2':
+          tempFlag = "W"
+          break;
+        case '4':
+          tempFlag = "D"
+          break;
+      }
+
+      if(this.found !== true){     
+
+        this.handleShowSaveProgress(tempFlag,this.SelectedEpisode, this.SelectedSeason).subscribe()
+        this.found = true;
+        
+      } else {
+        if((this.SelectedEpisode !== this.tempEpisode) && (this.SelectedSeason !== this.tempSeason)){
+          this.handleShowUpdateSeason(this.SelectedSeason).subscribe()
+          this.handleShowUpdateEpisode(this.SelectedEpisode).subscribe()
+        } else if((this.SelectedEpisode !== this.tempEpisode) && (this.SelectedSeason == this.tempSeason)){
+          this.handleShowUpdateEpisode(this.SelectedEpisode).subscribe()
+        } else if((this.SelectedEpisode == this.tempEpisode) && (this.SelectedSeason !== this.tempSeason)){
+          this.handleShowUpdateSeason(this.SelectedSeason).subscribe()
+        }
+
+        this.handleShowUpdateFlag(tempFlag).subscribe()
+      }
 
 
 
 
     } else if(type === 'M') {
       //console.log(this.progressFlag)
-      var  tempFlag 
+      
       switch (this.progressFlag) {
         case "1":
           tempFlag = "P"
@@ -181,10 +224,13 @@ export class ModalComponent {
       if(this.found !== true){     
 
         this.handleMovieSaveProgress(tempFlag).subscribe()
+        this.found = true;
         
       } else {
 
-       this.handleMovieUpdateProgress(tempFlag).subscribe()
+        
+        
+        this.handleMovieUpdateProgress(tempFlag).subscribe()
       }
     }
     
@@ -202,6 +248,74 @@ export class ModalComponent {
      catchError((err) => {
        console.error(err);
        window.alert(" Progress creation failed!");
+       throw err;
+     })
+   )
+  }
+
+  handleShowSaveProgress(Flag:any, EpCount:any, SeCount:any){
+    const headers = {'content-type': 'application/json'}
+    var jsonData = {
+      "tvid": this.tvId,
+      "flag": Flag,
+      "episodecount": EpCount,
+      "seasoncount": SeCount
+    }
+    const body = JSON.stringify(jsonData);
+
+   return this.httpClient.post("http://localhost:8080/api/tv/"+localStorage.getItem("id")+"/create",body,{ headers, responseType: 'text' }).pipe (
+     catchError((err) => {
+       console.error(err);
+       window.alert(" Progress creation failed!");
+       throw err;
+     })
+   )
+  }
+
+  handleShowUpdateFlag(Flag:any){
+    const headers = {'content-type': 'application/json'}
+    var jsonData = {
+      "tvid": this.tvId,
+      "flag": Flag,
+    }
+    const body = JSON.stringify(jsonData);
+
+   return this.httpClient.put("http://localhost:8080/api/tv/updateFlag/"+localStorage.getItem("id"),body,{ headers, responseType: 'text' }).pipe (
+     catchError((err) => {
+       console.error(err);
+       window.alert(" Progress update failed!");
+       throw err;
+     })
+   )
+  }
+  handleShowUpdateEpisode(Episode:any){
+    const headers = {'content-type': 'application/json'}
+    var jsonData = {
+      "tvid": this.tvId,
+      "episodecount": Episode,
+    }
+    const body = JSON.stringify(jsonData);
+
+   return this.httpClient.put("http://localhost:8080/api/tv/updateEpisode/"+localStorage.getItem("id"),body,{ headers, responseType: 'text' }).pipe (
+     catchError((err) => {
+       console.error(err);
+       window.alert(" Progress update failed!");
+       throw err;
+     })
+   )
+  }
+  handleShowUpdateSeason(Season:any){
+    const headers = {'content-type': 'application/json'}
+    var jsonData = {
+      "tvid": this.tvId,
+      "seasoncount": Season,
+    }
+    const body = JSON.stringify(jsonData);
+
+   return this.httpClient.put("http://localhost:8080/api/tv/updateSeason/"+localStorage.getItem("id"),body,{ headers, responseType: 'text' }).pipe (
+     catchError((err) => {
+       console.error(err);
+       window.alert(" Progress update failed!");
        throw err;
      })
    )

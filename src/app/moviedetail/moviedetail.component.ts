@@ -111,14 +111,14 @@ export class MoviedetailComponent implements OnInit {
       this.updateFav().subscribe()
      
       this.tvStatus = 'tvWatched'
-      console.log(this.tvStatus)
+      //console.log(this.tvStatus)
 
     } else {
       
       this.updateFav().subscribe()
 
       this.tvStatus = 'tvNotWatched'
-      console.log(this.tvStatus)
+      //console.log(this.tvStatus)
     } 
     
   }

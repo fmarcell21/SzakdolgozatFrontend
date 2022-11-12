@@ -9,5 +9,8 @@ export interface Movie {
     title: string,
     backdrop_path: string,
     genres: Genre[],
-    media_type: string
+    media_type: string,
+    Flag: string,
+
+    
 };

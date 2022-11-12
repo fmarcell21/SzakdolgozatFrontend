@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Multi } from '../model/Multi';
-
+import { catchError } from 'rxjs';
 import { Person } from '../model/Person';
 
 @Component({
@@ -48,17 +48,55 @@ export class PersondetailComponent implements OnInit {
           this.isLoaded = true;
           //console.log(response)
     })
+
+    this.httpClient.get<any>("http://localhost:8080/api/person/find/"+ localStorage.getItem("id") +"/"+ this.id).subscribe(
+      Response => {
+        if(Response[0] !== undefined){
+          if(Response[0].favflag === "true"){
+          this.favStatus = 'Fav'
+          
+        } else {
+          this.favStatus = 'notFav'
+        }
+        
+        }
+        
+        
+      }
+    )
   }
 
   changeColour() {
     if(this.favStatus === 'notFav'){
       this.favStatus = 'Fav'
+      this.updateFav().subscribe()
       
     } else {
       this.favStatus = 'notFav'
+      this.updateFav().subscribe()
       
     } 
     
+  }
+
+  updateFav(){
+    const headers = {'content-type': 'application/json'} 
+    
+
+    var jsonData = {
+      "perid": this.id
+    }
+
+    const body = JSON.stringify(jsonData);
+
+    
+
+    return this.httpClient.put("http://localhost:8080/api/person/updateFav/"+localStorage.getItem("id"), body, {headers}).pipe(
+      catchError((err) => {
+        window.alert("Fav change failed");
+        throw err
+      }))
+
   }
 
   onClick(detailId: string, detailType: string){
