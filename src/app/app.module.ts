@@ -50,6 +50,7 @@ import { TvListComponent } from './tv-list/tv-list.component';
 import { PersondetailComponent } from './persondetail/persondetail.component';
 import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
 import { JwtInterceptor } from './jwtInterceptor';
+import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
 
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
@@ -74,6 +75,7 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     TvListComponent,
     PersondetailComponent,
     AdvancedSearchComponent,
+    ConfirmationModalComponent,
    
     
   ],

@@ -39,6 +39,15 @@ export class MoviedetailComponent implements OnInit {
   public hasCast = false
   openModal(){
     this.modalRef = this.modalService.open(ModalComponent)
+    this.modalRef.onClose.subscribe((message: any) => {
+      //console.log(message)
+      if(message == 'deleted'){
+        
+        this.tvStatus = "tvNotWatched"
+
+      }
+      
+    }) 
   }
 
 

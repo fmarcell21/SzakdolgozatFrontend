@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
  // LoginStatus$ = new BehaviorSubject<boolean>(null);
  // Username$ : Observable<string>;
   public sQuery: string = ""
+  public username: string | null = localStorage.getItem("username")
   constructor(
     private router: Router,
   ) { }

@@ -40,39 +40,25 @@
                 <span  class="input-group-text text-gold" >{{Seasons[SelectedSeason].episode_count}}</span>
             
             </form>     
-            <!-- <app-episodecount  [Season]="Seasons[Selected] " [Seasons] = "Seasons" [Selected]="Selected" [(ngModel)] ="Selected" name="episodeInput"></app-episodecount>  -->
             
-            <!-- <div class="input-group" >
-                <select class="form-control" id="statusFlag" >
-                    <option disabled>Season</option>
-                    <option *ngFor="let season of Seasons">{{season.name}}</option>
-                </select>
-            </div> -->
-            <!-- <div class="input-group " style="width: 70%; margin-left: auto; margin-right: auto;">
-                <span class="input-group-text">Season</span>
-                <input type="number" class="form-control" id="tvSeason" placeholder="0" min="1" step="1" max="{{NumberOfSeasons}}"/>
-                <span class="input-group-text">/</span>
-                <span class="input-group-text">{{NumberOfSeasons}}</span>
-            </div>
-
-            <div class="input-group " style="width: 70%; margin-left: auto; margin-right: auto; padding-top: 5px;">
-                <span class="input-group-text">Episode</span>
-                <input type="number" class="form-control" id="tvEpisode" placeholder="0" min="1" step="1" max="{{NumberOfEpisodes}}"/>
-                <span class="input-group-text">/</span>
-                <span class="input-group-text">{{NumberOfEpisodes}}</span>
-            </div> -->
-            
-            
-
             
         </form>
             
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="modalRef.close()" >
-          Cancel
-        </button>
-        <button type="button" class="btn btn-primary" (click)="saveProgress('T')">Save changes</button>
+    <div class="modal-footer" style="justify-content:space-between!important ;">
+        
+        <button type="button" class="btn btn-red"  style="background-color: #e24331; color: white;" (click)="deleteProgress('T')">
+            Delete
+          </button>
+        <div>
+            <button type="button" class="btn btn-primary" style="float: left!important;" (click)="modalRef.close()" >
+                Cancel
+            </button>
+            
+            <button type="button" class="btn btn-green" style="float:right!important; background-color: #47d384; color: white;"(click)="saveProgress('T')">Save changes</button>
+
+        </div>
+        
       </div>
 </div>
 
@@ -106,10 +92,19 @@
         
             
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="modalRef.close()" >
-          Cancel
-        </button>
-        <button type="button" class="btn btn-primary" (click)="saveProgress('M')">Save changes</button>
+    <div class="modal-footer" style="justify-content:space-between!important ;">
+        
+        <button type="button" class="btn btn-red"  style="background-color: #e24331; color: white;" (click)="deleteProgress('T')">
+            Delete
+          </button>
+        <div>
+            <button type="button" class="btn btn-primary" style="float: left!important;" (click)="modalRef.close()" >
+                Cancel
+            </button>
+            
+            <button type="button" class="btn btn-green" style="float:right!important; background-color: #47d384; color: white;"(click)="saveProgress('M')">Save changes</button>
+
+        </div>
+        
       </div>
 </div>

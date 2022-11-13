@@ -1,10 +1,11 @@
 <div style="justify-content: center!important; display: grid;" *ngIf="isLoaded">
+    <!-- <div class="d-flex align-items-center " style="margin-bottom:0px; height: 880px; padding-right: 25px; max-width: 1903px; min-width: 1903px;"></div> -->
 <div class="d-flex align-items-center " style="margin-bottom:0px; height: 880px; padding-right: 25px; max-width: 1903px; min-width: 1903px;">
-    <div class="col-2 mb-1" style="padding: 25px;  margin-top: 10px;">
-
+    <!-- <div class="col-2 mb-1" style="padding: 25px;  margin-top: 10px;"> -->
+    <!-- <div class="col-2 mb-1" style="padding: 25px;  margin-top: 10px;">
+    
         <div class="row mb-1" style="height: 350px;">
-            <!-- Profile pic + name -->
-            <!-- az api-tól fogja megkapni a profil képet meg nevet... ez csak placeholder -->
+            
             <div class="card bg-navy" style="max-height: 350px;" style="max-width: 292px;" >
                 <img class="card-img-top" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
                 <div class="card-body" >
@@ -15,7 +16,7 @@
         </div>
 
         <div class="row mb-1" style="height: 500px;">
-            <!-- General data about the user? -->
+           
             <div class="card text-gold bg-navy mb-3" style="margin-bottom: 4px!important;">
                 <div class="card-header">
                     <div class="btn-group btn-group-sm" style="width: 100%;" role="group"  aria-label="ListGroup">
@@ -23,24 +24,11 @@
                         <button type="button" class="btn btn-primary text-gold" (click)="toList('T')">Shows</button>
                     </div>
                 </div>
-
-                <!-- <div class="card-body" >
-                    <div style="display:inline-block; border-bottom: 1px solid rgba(0,0,0, 0.125);">                  
-                        <span style="display:block; width:50%; float:left; text-align: left;">Gender</span>                    
-                        <span style="display:block; width:50%; float:right; text-align: right;">Male</span>
-                        
-                        <span style="display:block; width:50%; float:left; text-align: left;">Birthday</span>                    
-                        <span style="display:block; width:50%; float:right; text-align: right;">1992.03.15</span>
-                        
-                        <span style="display:block; width:50%; float:left; text-align: left;">Joined</span>                    
-                        <span style="display:block; width:50%; float:right; text-align: right;">2022.08.23</span>
-                    </div> 
-                </div> -->
             </div>
         </div>
 
-    </div>
-    <div class="col-9 mb-1 " style="height: 850px; width: 82%; ">
+    </div> -->
+    <div class="col-9 mb-1 " style="height: 850px; width: 82%; margin-left: auto; margin-right: auto;">
        <div class="d-flex align-items-center text-gold" >
             <div class="col-6 ">
                 <div class="row bg-navy" style="height: 425px; padding: 15px;">
@@ -72,7 +60,7 @@
 
                             <ul style="margin-top: 150px;">
                                 <li>
-                                    <span style="display:block; width:50%; float:left; text-align: left;">Total watched:</span>                    
+                                    <span style="display:block; width:50%; float:left; text-align: left;">Total:</span>                    
                                     <span style="display:block; width:50%; float:right; text-align: right;">{{TvCount.All}}</span>
                                 </li>                            
                             </ul>
@@ -115,7 +103,7 @@
 
                             <ul style="margin-top: 201.2px;">
                                 <li>
-                                    <span style="display:block; width:50%; float:left; text-align: left;">Total watched:</span>                    
+                                    <span style="display:block; width:50%; float:left; text-align: left;">Total:</span>                    
                                     <span style="display:block; width:50%; float:right; text-align: right;">{{MovieCount.All}}</span>
                                 </li>                            
                             </ul>

@@ -42,7 +42,7 @@ export class TvListComponent implements OnInit {
           
           this.httpClient.get<any>('https://api.themoviedb.org/3/tv/'+Response1[i].movieid+'?api_key='+environment.apiKey+'&language=en-US').subscribe(
                response2 => {
-               // console.log(response2)
+               //console.log(response2)
                 
                 this.Details.push(response2)
                 switch (Response1[i].flag){

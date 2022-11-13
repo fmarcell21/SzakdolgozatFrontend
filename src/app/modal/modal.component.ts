@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
+import { MdbModalRef,MdbModalService} from 'mdb-angular-ui-kit/modal';
 import { ActivatedRoute } from '@angular/router';
+
 
 import { HttpClient } from '@angular/common/http';
 import { Show } from '../model/Show';
@@ -10,6 +11,7 @@ import { catchError } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 
 import { EpisodecountComponent } from '../episodecount/episodecount.component';
+import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-modal',
@@ -33,6 +35,8 @@ export class ModalComponent {
   public SelectedSeason: number = 1 //on initben lekéri majd a RESTAPIT-tól hogy benen van e már listában az adott cucc, ha igen akkor ezek kapnak értéket attól függően
   public SelectedEpisode: number = 1
 
+  public progressID: string = ""
+
   public tempSeason!: number
   public tempEpisode!: number
 
@@ -41,8 +45,11 @@ export class ModalComponent {
 
   constructor(
     public modalRef: MdbModalRef<ModalComponent>,
+    public confModalRef: MdbModalRef<ConfirmationModalComponent>,
     private route: ActivatedRoute,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private confModalService: MdbModalService
+
     ) {}
 
   ngOnInit() {
@@ -58,7 +65,7 @@ export class ModalComponent {
 
           this.httpClient.get<any>('http://localhost:8080/api/tv/find/'+localStorage.getItem("id")+"/"+this.tvId).subscribe(
             response => {
-              console.log(response[0])
+             // console.log(response[0])
               if((response[0]) !== undefined){
                 switch (response[0].flag) {
                   case 'P':
@@ -77,11 +84,12 @@ export class ModalComponent {
                     this.progressFlag = "4"
                     break;
                 }
-
+                
                 this.found = true
                 this.SelectedEpisode = response[0].episode_count
                 this.SelectedSeason = response[0].season_count
-
+               // localStorage.setItem("progressID" , response[0].id)
+               this.progressID= response[0].id
                 this.tempEpisode = response[0].episode_count
                 this.tempSeason = response[0].season_count
               }
@@ -90,7 +98,7 @@ export class ModalComponent {
 
          this.NumberOfEpisodes = response.number_of_episodes
          this.NumberOfSeasons = response.number_of_seasons
-          
+         // this.progressID = response.id
          this.Seasons = response.seasons 
           //console.log(response.seasons)
           
@@ -103,7 +111,7 @@ export class ModalComponent {
            //this.Seasons = this.dummyarray.concat(response.seasons)
             this.Seasons.unshift(this.dummyarray)
             
-            console.log(this.Seasons)
+            //console.log(this.Seasons)
             this.isLoaded = true
           }
           
@@ -128,6 +136,7 @@ export class ModalComponent {
                 break;
             }
            // console.log(this.found)
+           this.progressID= response[0].id
             this.found = true;
            // console.log(this.found)
           }
@@ -145,7 +154,27 @@ export class ModalComponent {
   //<option value="4">Dropped</option> D
 
 
+  deleteProgress(Type: String){
+   /* if(Type === 'T'){
+      this.handleDeleteTvProgress().subscribe()
+    } else {
 
+    }*/
+    this.confModalRef = this.confModalService.open(ConfirmationModalComponent, {modalClass: 'modal-sm', data: {id: this.progressID, type: this.modalType}})
+    this.confModalRef.onClose.subscribe((message: any) => {
+      
+      if(message == 'deleted'){
+        this.modalRef.close('deleted')
+
+      }
+      
+    }) 
+
+    }
+    
+  
+
+  
 
   toNumber(num: string) {
     return Number(num)
@@ -204,7 +233,7 @@ export class ModalComponent {
         this.handleShowUpdateFlag(tempFlag).subscribe()
       }
 
-
+      this.modalRef.close()
 
 
     } else if(type === 'M') {
@@ -232,6 +261,8 @@ export class ModalComponent {
         
         this.handleMovieUpdateProgress(tempFlag).subscribe()
       }
+
+      this.modalRef.close()
     }
     
   }

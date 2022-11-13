@@ -42,7 +42,7 @@
                     <a class="dropdown-item text-gold bg-navy" href="top?type=M&page=1">Top Movies</a>
                     </li>
                     <li>
-                    <a class="dropdown-item text-gold bg-navy" href="#">Movie Search</a>
+                    <a class="dropdown-item text-gold bg-navy" href="movielist?view=A">Movie List</a>
                     </li>
                 </ul>
                 </li>
@@ -65,7 +65,7 @@
                     <a class="dropdown-item text-gold bg-navy" href="top?type=T&page=1">Top Shows</a>
                     </li>
                     <li>
-                    <a class="dropdown-item text-gold bg-navy" href="#">Show Search</a>
+                    <a class="dropdown-item text-gold bg-navy" href="tvlist?view=A">Show list</a>
                     </li>
                 </ul>
                 </li>
@@ -95,21 +95,22 @@
                 mdbDropdownToggle
                 aria-expanded="false"
               >
-              <img
+              <!-- <img
                 src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"
                 class="rounded-circle"
                 height="22"
                 alt=""
                 loading="lazy"
-              />
+              /> -->
+              {{username}}
               </a>
               <ul mdbDropdownMenu class="dropdown-menu bg-navy " aria-labelledby="navbarDropdownMenuLink">
                 <li>
                   <a class="dropdown-item text-gold" href="/profile">My profile</a>
                 </li>
-                <li>
+                <!-- <li>
                   <a class="dropdown-item text-gold" href="#">Settings</a>
-                </li>
+                </li> -->
                 <li>
                   <a class="dropdown-item text-gold" (click)="logout()">Logout</a>
                 </li>
