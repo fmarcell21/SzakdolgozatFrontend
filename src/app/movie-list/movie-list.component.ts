@@ -4,6 +4,8 @@ import { Movie } from '../model/Movie';
 import { HttpClient } from '@angular/common/http';
 import { MovieProgress } from '../model/MovieProgress';
 import { environment } from 'src/environments/environment';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-movie-list',
@@ -12,10 +14,14 @@ import { environment } from 'src/environments/environment';
 })
 export class MovieListComponent implements OnInit {
 
+  modalRef: MdbModalRef<ModalComponent> | null = null;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private httpClient: HttpClient,
+   // public modalRef: MdbModalRef<ModalComponent>,
+    private modalService: MdbModalService
 
   ) { }
   public ListSort: string ="A"
@@ -109,10 +115,19 @@ export class MovieListComponent implements OnInit {
   
   onClick(detailId: string, detailType: string){
     // this.router.navigateByUrl('/details'); ///'+detailType+detailId
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.navigate(['/details'], { queryParams: {type: detailType, id: detailId }})
+    //this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    //this.router.navigate(['/details'], { queryParams: {type: detailType, id: detailId }})
     // console.log(detailId);
      //console.log(detailType)
     // this.detailservice.setDetail(detailId, detailType)
-   }
+    this.modalRef = this.modalService.open(ModalComponent, {data: {listId: detailId, listType: "M"}})
+    this.modalRef.onClose.subscribe((message: any) => {
+      if(message !== 'nothing'){
+        window.location.reload()
+      }
+      
+    }) 
+    
+    }
+   
 }

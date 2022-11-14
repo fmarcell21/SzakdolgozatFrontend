@@ -3,17 +3,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Show } from '../model/Show';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { ModalComponent } from '../modal/modal.component';
 @Component({
   selector: 'app-tv-list',
   templateUrl: './tv-list.component.html',
   styleUrls: ['./tv-list.component.scss']
 })
 export class TvListComponent implements OnInit {
-
+  modalRef: MdbModalRef<ModalComponent> | null = null;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private modalService: MdbModalService
     ) { }
 
     public ListSort: string ="A"
@@ -112,11 +115,18 @@ export class TvListComponent implements OnInit {
   
   onClick(detailId: string, detailType: string){
     // this.router.navigateByUrl('/details'); ///'+detailType+detailId
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.navigate(['/details'], { queryParams: {type: detailType, id: detailId }})
+    //this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+   // this.router.navigate(['/details'], { queryParams: {type: detailType, id: detailId }})
     // console.log(detailId);
      //console.log(detailType)
     // this.detailservice.setDetail(detailId, detailType)
+    this.modalRef = this.modalService.open(ModalComponent, {data: {listId: detailId, listType: "T"}})
+    this.modalRef.onClose.subscribe((message: any) => {
+      if(message !== 'nothing'){
+        window.location.reload()
+      }
+      
+    }) 
    }
 
 }

@@ -41,7 +41,8 @@ export class ModalComponent {
   public tempEpisode!: number
 
   public dummyarray!: Season
-  
+  listId!: string 
+  listType!: string 
 
   constructor(
     public modalRef: MdbModalRef<ModalComponent>,
@@ -53,11 +54,17 @@ export class ModalComponent {
     ) {}
 
   ngOnInit() {
+    if(this.listId !== null && this.listId !== undefined){
+      console.log(this.listId)
+      this.modalType = this.listType
+      this.tvId = this.listId
+    } else {
+      this.route.queryParams.subscribe(params => {
+        this.modalType = params['type']
+        this.tvId = params['id']
+      })
+    }
     
-    this.route.queryParams.subscribe(params => {
-      this.modalType = params['type']
-      this.tvId = params['id']
-    })
     
     if(this.modalType === 'T'){
       this.httpClient.get<any>('https://api.themoviedb.org/3/tv/'+this.tvId+'?api_key='+environment.apiKey+'&language=en-US').subscribe(
@@ -216,7 +223,7 @@ export class ModalComponent {
       }
 
       if(this.found !== true){     
-
+        
         this.handleShowSaveProgress(tempFlag,this.SelectedEpisode, this.SelectedSeason).subscribe()
         this.found = true;
         

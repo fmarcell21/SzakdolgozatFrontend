@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,8 @@ import { catchError } from 'rxjs/operators';
 export class RegisterComponent implements OnInit {
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private router: Router,
 
   ) { }
     public rMovies!: Movie[]
@@ -43,6 +45,9 @@ export class RegisterComponent implements OnInit {
       console.warn(result)
       window.alert(result)
     })
+
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.navigate(['/login'])
   }
 
   handleRegister(data:NgForm){
